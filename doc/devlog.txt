@@ -1,0 +1,8 @@
+Team Hydroflask
+Sofdev1 pd1
+P02 -- Devlog
+2019-12-26
+
+ALL -- 2019-12-26 23:25
+    -collaborated over virtual hot chocolate (via discord voice)
+    -wrote v0 of design doc, including sitemap and component map
