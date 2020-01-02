@@ -6,3 +6,10 @@ P02 -- Devlog
 ALL -- 2019-12-26 23:25
     -collaborated over virtual hot chocolate (via discord voice)
     -wrote v0 of design doc, including sitemap and component map
+
+amandaZ -- 2020-01-02 08:35
+    -added missing element of design doc, description of why bootstrap will be used
+
+kiranV -- 2020-01-02 14:23
+    -added pdf files of knowledge base cards for our three APIs
+    -updated design.pdf to include amanda's changes
