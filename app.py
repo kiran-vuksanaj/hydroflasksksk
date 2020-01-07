@@ -104,7 +104,40 @@ def signupcheck():
 @app.route("/home")
 @login_required
 def home():
-    return "HOME PAGE"
+    '''def home(): homepage checks if user is in session and gets info on user'''
+    user = session['username']
+    money = db_manager.getMoney(user)
+    return render_template("home.html", user=user, home="active", money=money)
+
+@app.route("/profile")
+@login_required
+def profile():
+    '''def profile(): allows user to update their profile and view their purchases'''
+    user = session['username']
+    return render_template("profile.html", user=user, profile="active")
+
+@app.route("/resetpasswd", methods=["POST"])
+@login_required
+def password():
+    '''def password(): backend of password changes, makes sure form is filled out correctly'''
+    password = request.form['password']
+    verif = request.form['verif']
+    oldpass = request.form['oldpass']
+    if (password == "" or verif == "" or oldpass == ""):
+        flash("Please fill out all fields!", 'alert-danger')
+        return redirect("/profile")
+    if (password != verif):
+        flash("Passwords do not match!", 'alert-danger')
+        return redirect("/profile")
+    username = session['username']
+    if (not db_manager.userValid(username, oldpass)):
+        flash("Wrong password!", 'alert-danger')
+        return redirect("/profile")
+    db_manager.changePass(username, password)
+    flash("Password successfully changed!", 'alert-success')
+    return redirect("/home")
+
+#====================================================
 
 @app.route("/slotmachine")
 @login_required
