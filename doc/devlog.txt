@@ -36,6 +36,6 @@ tiffanyC -- 2020-01-07 08:40
     -reworded the function for when users win
     -function updates money to the database
 
-tiffanyC --
+tiffanyC -- 2020-01-07 14:09
     -fixed small mistake in slotmachine function
     -updated function to make each fruit have different probabilities
