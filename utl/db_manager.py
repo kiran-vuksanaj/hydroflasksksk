@@ -30,4 +30,18 @@ def addUser(username, password):
         return True
     return False #if username already exists
 
+def changePass(username, password):
+    '''def changePass(username, password): updating data table of user in session with new password'''
+    q = "UPDATE user_tbl SET password=? WHERE username=?"
+    inputs = (password, username)
+    execmany(q, inputs)
+
 #====================================================
+# USER DATABASE FUNCTIONS
+
+def getMoney(username):
+    '''def getMoney(username): get current amount of money of user in session'''
+    q = "SELECT money from user_tbl WHERE username=?"
+    inputs = (username, )
+    data = execmany(q, inputs).fetchone()[0]
+    return data
