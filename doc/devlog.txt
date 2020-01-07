@@ -13,3 +13,9 @@ amandaZ -- 2020-01-02 08:35
 kiranV -- 2020-01-02 14:23
     -added pdf files of knowledge base cards for our three APIs
     -updated design.pdf to include amanda's changes
+
+kiranV -- 2020-01-06 19:46
+    -updated pdf for design doc including changes based on peer review:
+      -revised assignment of roles
+      -clarified description of Texas Hold'em, separated discussion of turn-based first-level goal from AJAX live updating
+      -modified a couple database row's types to enable ease of use while integrating with APIs
