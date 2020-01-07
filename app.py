@@ -115,40 +115,41 @@ def slot():
     if request.args.get('slotbet'):
         bet = request.args.get('slotbet')
         print(bet)
-        if bet == "" or int(bet) < 100 or int(bet) > db_manager.getMoney(username):
+        if bet == "" or int(bet) < 100:
+        # or int(bet) > db_manager.getMoney(username):
             bet = 100
             flash("Please place a valid bet.", 'alert-danger')
             return render_template("slotmachine.html", primarybet = bet, bet = 0, image1 = dict[random.choice(slotImages)], image2 = dict[random.choice(slotImages)], image3 = dict[random.choice(slotImages)], money = 0, colour = "yellow")
         else:
             bet = int(bet)
-            db_manager.updateMoney(session['username'], -bet)
+            # db_manager.updateMoney(session['username'], -bet)
             rand1 = random.choice(slotImages)
             rand2 = random.choice(slotImages)
             rand3 = random.choice(slotImages)
             if rand1 == rand2 and rand2 == rand3:
                 if rand1 == "lemon":
-                     db_manager.updateMoney(session['username'], bet)
+                     # db_manager.updateMoney(session['username'], bet)
                      money = bet
                 if rand1 == "cherry":
-                     db_manager.updateMoney(session['username'], 2 * bet)
+                     # db_manager.updateMoney(session['username'], 2 * bet)
                      money = 2 * bet
                 if rand1 == "clover":
-                     db_manager.updateMoney(session['username'], 3 * bet)
+                     # db_manager.updateMoney(session['username'], 3 * bet)
                      money = 3 * bet
                 if rand1 == "heart":
-                     db_manager.updateMoney(session['username'], 4 * bet)
+                     # db_manager.updateMoney(session['username'], 4 * bet)
                      money = 4 * bet
                 if rand1 == "diamond":
-                     db_manager.updateMoney(session['username'], 5 * bet)
+                     # db_manager.updateMoney(session['username'], 5 * bet)
                      money = 5 * bet
                 if rand1 == "dollars":
-                     db_manager.updateMoney(session['username'], 6 * bet)
+                     # db_manager.updateMoney(session['username'], 6 * bet)
                      money = 6 * bet
                 colour = "red"
             else:
                 money = 0
                 colour = "yellow"
-            return render_template("slotmachine.html", primarybet = bet, bet = bet, image1 = dict[rand1], image2 = dict[rand2], image3 = dict[rand3], win = money, colour = colour)
+            return render_template("slotmachine.html", primarybet = bet, bet = bet, image1 = dict[rand1], image2 = dict[rand2], image3 = dict[rand3], money = money, colour = colour)
     else:
         bet = 100
         money = 0
@@ -158,6 +159,8 @@ def slot():
 def images():
     dict =  {}
     slotImages = []
+    list = [35, 25, 20, 10, 6, 4]
+    n = 0
     file = open("slotimages.csv", "r") #opens second file with links
     content = file.readlines() #parse through files by line
     content = content[1:len(content)] #take out the table heading
@@ -165,9 +168,17 @@ def images():
         line = line.strip() #removes \n
         line = line.split(",") #if line does not contain quotes, split by comma
         dict[line[0]] = (line[1]) #key value pair
-        slotImages.append(line[0])
+        for i in range(list[n]):
+            slotImages.append(line[0])
+        # print(n)
+        # print(list[n])
+        n = n + 1
     # print(dict) #testing results
     file.close()
+    # print("dict here")
+    # print(dict)
+    # print("slotimages here")
+    # print(slotImages)
     return dict,slotImages
 
 
