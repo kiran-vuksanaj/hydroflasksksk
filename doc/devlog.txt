@@ -19,3 +19,6 @@ kiranV -- 2020-01-06 19:46
       -revised assignment of roles
       -clarified description of Texas Hold'em, separated discussion of turn-based first-level goal from AJAX live updating
       -modified a couple database row's types to enable ease of use while integrating with APIs
+
+jackieL -- 2020-01-06 20:44
+added login and signup html pages with appropriate flask routes, and database functions, added bootstrap styling, created database tables 
