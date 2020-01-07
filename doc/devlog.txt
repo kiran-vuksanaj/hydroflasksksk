@@ -28,3 +28,10 @@ tiffanyC --- 2020-01-07 08:13
       -primitive layout of the page
       -added images of slots into csv file
       -slot machine works but the chances of winning are very low
+
+tiffanyC --- 2020-01-07 08:40
+    -slot machine generates random images from dictionary each call
+    -rewrote dictionary function and used __name__ == "__main__" to call it once
+    -slot machine function tests for money betting minimum and maximum
+    -reworded the function for when users win
+    -function updates money to the database
