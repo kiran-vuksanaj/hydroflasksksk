@@ -233,6 +233,11 @@ def images():
 #====================================================
 # BLACKJACK
 
+@app.route("/blackjack")
+@login_required
+def blackjack():
+    ''' def blackjack(): route for blackjack game '''
+    return render_template("blackjack.html")
 #====================================================
 # LOGOUT
 
