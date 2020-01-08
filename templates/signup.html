@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-  <h1> Sign Up </h1>
+  <h1 style="color:#f84854"> Sign Up </h1>
 
   <div class="w-25 p-3">
     <form action="/signupcheck" method="POST">
@@ -25,11 +25,11 @@
         <input name="confirmation" type="password" class="form-control" id="confirm" value={{confirm}}>
       </div>
       <br>
-      <button type="submit" class="btn btn-primary">Register</button>
+      <button type="submit" class="btn" style="background-color:#f84854">Register</button>
     </form>
     <br>
     <form>
-      <input class="btn btn-link" type="button" onclick= "location.href='/login';" value = "Log In">
+      <input class="btn btn-link text-light" type="button" onclick= "location.href='/login';" value = "Log In">
     </form>
   </div>
 {% endblock %}

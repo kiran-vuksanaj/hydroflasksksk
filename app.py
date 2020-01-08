@@ -137,7 +137,24 @@ def password():
     flash("Password successfully changed!", 'alert-success')
     return redirect("/home")
 
+@app.route("/store")
+@login_required
+def store():
+    return render_template("store.html", store="active")
+
+@app.route("/games")
+@login_required
+def games():
+    return render_template("games.html", games="active")
+
 #====================================================
+# WHEEL OF FORTUNE AND LOTTERY TICKETS
+
+#====================================================
+# DICE GAME
+
+#====================================================
+# SLOT MACHINE
 
 @app.route("/slotmachine")
 @login_required
@@ -151,7 +168,7 @@ def slot():
         if bet == "" or int(bet) < 100 or int(bet) > db_manager.getMoney(username):
             bet = 100
             flash("Please place a valid bet.", 'alert-danger')
-            return render_template("slotmachine.html", primarybet = bet, bet = 0, image1 = dict[random.choice(slotImages)], image2 = dict[random.choice(slotImages)], image3 = dict[random.choice(slotImages)], usermoney = db_manager.getMoney(username), money = 0, colour = "yellow")
+            return render_template("slotmachine.html", primarybet = bet, bet = 0, image1 = dict[random.choice(slotImages)], image2 = dict[random.choice(slotImages)], image3 = dict[random.choice(slotImages)], usermoney = db_manager.getMoney(username), money = 0, colour = "yellow", games="active")
         else:
             bet = int(bet)
             db_manager.updateMoney(session['username'], -bet)
@@ -177,15 +194,15 @@ def slot():
                 if rand1 == "dollars":
                      db_manager.updateMoney(session['username'], 6 * bet)
                      money = 6 * bet
-                colour = "red"
+                colour = "green"
             else:
                 money = 0
                 colour = "yellow"
-            return render_template("slotmachine.html", primarybet = bet, bet = bet, image1 = dict[rand1], image2 = dict[rand2], image3 = dict[rand3], usermoney = db_manager.getMoney(username), money = money, colour = colour)
+            return render_template("slotmachine.html", primarybet = bet, bet = bet, image1 = dict[rand1], image2 = dict[rand2], image3 = dict[rand3], usermoney = db_manager.getMoney(username), money = money, colour = colour, games="active")
     else:
         bet = 100
         money = 0
-        return render_template("slotmachine.html", primarybet = bet, bet = 0, image1 = dict[random.choice(slotImages)], image2 = dict[random.choice(slotImages)], image3 = dict[random.choice(slotImages)], usermoney = db_manager.getMoney(username), money = 0, colour = "yellow")
+        return render_template("slotmachine.html", primarybet = bet, bet = 0, image1 = dict[random.choice(slotImages)], image2 = dict[random.choice(slotImages)], image3 = dict[random.choice(slotImages)], usermoney = db_manager.getMoney(username), money = 0, colour = "yellow", games="active")
 
 
 def images():
@@ -215,7 +232,17 @@ def images():
 
 
 #====================================================
+# LOGOUT
 
+@app.route("/logout")
+@login_required
+def logout():
+    '''def logout(): logging out of session, redirects to login page'''
+    session.clear()
+    flash('You were successfully logged out.', 'alert-success')
+    return redirect('/')
+
+#====================================================
 if __name__ == "__main__":
     db_builder.build_db()
     dict,slotImages = images()

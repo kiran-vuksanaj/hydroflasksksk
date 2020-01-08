@@ -37,7 +37,7 @@ def changePass(username, password):
     execmany(q, inputs)
 
 #====================================================
-# USER DATABASE FUNCTIONS
+# USER MONEY DATABASE FUNCTIONS
 
 def getMoney(username):
     '''def getMoney(username): get current amount of money of user in session'''
@@ -45,3 +45,19 @@ def getMoney(username):
     inputs = (username, )
     data = execmany(q, inputs).fetchone()[0]
     return data
+
+def checkBet(username, bet):
+    '''def checkBet(username, bet): check if user is betting a valid amount'''
+    money = getMoney(username)
+    bet = int(bet)
+    return money >= bet
+
+def updateMoney(username, amount):
+    '''def updateMoney(username, amount): updating data table of user in session with new amount'''
+    q = "UPDATE user_tbl SET money=? WHERE username=?"
+    money = getMoney(username)
+    amount += money
+    inputs = (amount, username)
+    execmany(q, inputs)
+
+#====================================================

@@ -7,7 +7,7 @@
  {% block body %}
 
  <h1> Slot Machine <!-- courtesy of https://getbootstrap.com/docs/4.0/components/modal/ -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style = "margin-left: 10px;">
+    <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style = "margin-left: 10px; background-color:#f84854;">
       Info
     </button>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -33,19 +33,25 @@
       </div>
     </div>
  </h1>
+<<<<<<< HEAD
 
  <h3 style = "color: green;"> My Money: {{ usermoney }} </h3>
 
+=======
+<br>
+ <h5 style = "color: green;"> My Balance: ${{ usermoney }} </h5>
+>>>>>>> cdb5e940f67a06c070602b0d09563ae706d47e8c
  <div class="w-25 p-3">
    <form action = "/slotmachine" method = "GET">
-     <label for="slotbet" class="font-weight-bold" style = "color: red;"> Make Your Bet: </label>
+     <label for="slotbet" class="font-weight-bold text-light"> Make Your Bet: </label>
      <input name="slotbet" type="number" class="form-control" id="slotbet" value = "{{ primarybet }}"><br>
-     <button type="submit" class="btn btn-primary" data-toggle = "tooltip" data-placement = "right" title = "Press to consecutively place the same bet and spin."> Let's Go! </button>
+     <button type="submit" class="btn" style="background-color:#f84854;" data-toggle = "tooltip" data-placement = "right" title = "Press to consecutively place the same bet and spin."> Let's Go! </button>
    </form>
  </div>
+ <br>
 
  <div class = "container-fluid">
-   <div class = "row">
+   <div class = "row w-75">
      <div class = "text-center col-md-4" style = "border: 10px solid {{ colour }};">
        <div class = "mr-0.5">
          <img src = "{{ image1 }}" class="img-fluid" alt="Responsive image">

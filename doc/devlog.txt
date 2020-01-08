@@ -4,8 +4,8 @@ P02 -- Devlog
 2019-12-26
 
 ALL -- 2019-12-26 23:25
-collaborated over virtual hot chocolate (via discord voice)
-wrote v0 of design doc, including sitemap and component map
+    -collaborated over virtual hot chocolate (via discord voice)
+    -wrote v0 of design doc, including sitemap and component map
 
 amandaZ -- 2020-01-02 08:35
     -added missing element of design doc, description of why bootstrap will be used
@@ -51,3 +51,15 @@ tiffanyC -- 2019-01-07 18:45
     -created a popup menu for slot machine instruction
     -changed layout of slotmachine.html for better user experience
     -viewers can see money updates on slotmachine.html
+
+jackieL -- 2020-01-07 19:24
+    -updated homepage styling
+
+jackieL -- 2020-01-07 19:48
+    -edited formatting for other routes and added database functions for slot machine
+
+kiranV -- 2020-01-07 20:19
+    -added doc/requirements.txt file, containing flask + its dependencies, wheel, and urllib3
+
+jackieL -- 2020-01-07 20:28
+    -edited formatting for games html page
