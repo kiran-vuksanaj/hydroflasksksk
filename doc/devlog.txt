@@ -51,3 +51,6 @@ tiffanyC -- 2019-01-07 18:45
     -created a popup menu for slot machine instruction
     -changed layout of slotmachine.html for better user experience
     -viewers can see money updates on slotmachine.html
+
+jackieL -- 2020-01-07 19:24
+		-updated homepage styling
