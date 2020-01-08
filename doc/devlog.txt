@@ -53,13 +53,13 @@ tiffanyC -- 2019-01-07 18:45
     -viewers can see money updates on slotmachine.html
 
 jackieL -- 2020-01-07 19:24
-		-updated homepage styling
+    -updated homepage styling
 
 jackieL -- 2020-01-07 19:48
-		-edited formatting for other routes and added database functions for slot machine
+    -edited formatting for other routes and added database functions for slot machine
 
 kiranV -- 2020-01-07 20:19
     -added doc/requirements.txt file, containing flask + its dependencies, wheel, and urllib3
 
 jackieL -- 2020-01-07 20:28
-		-edited formatting for games html page
+    -edited formatting for games html page

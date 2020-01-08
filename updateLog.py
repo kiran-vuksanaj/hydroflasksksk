@@ -14,7 +14,7 @@ try:
     subprocess.run(['git', 'pull']).check_returncode()
     with open("./doc/devlog.txt", "a") as devlog:
         devlog.write("\n" + name + " -- " + timestamp + "\n")
-        devlog.write("\t\t-"+update+"\n")
+        devlog.write("    -"+update+"\n")
     subprocess.run(['git', 'add', '.'])
     subprocess.run(['git', 'commit', '-m', name + ': ' + update])
     subprocess.run(['git', 'push'])
