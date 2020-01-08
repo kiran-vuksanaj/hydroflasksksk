@@ -6,8 +6,24 @@ Blackjack
 
 {% block body %}
 
+<h3>Blackjack</h3><br />
+
 {% if mode=="bet" %}
 <!-- display form to place a bet -->
+<form action="/blackjack" method="POST">
+  <div class="form-group w-25">
+    <label for="bet">Please place a bet from $100 to $1000:</label>
+    <input
+      name="bet" id="bet"
+      type="number"
+      class="form-control"
+      value="100" min="100" max="1000"
+      />
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary">Start Game</button>
+</form>
+
 {% endif %}
 
 {% if mode=="play" %}
