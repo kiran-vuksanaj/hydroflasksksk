@@ -230,6 +230,8 @@ def images():
     # print(slotImages)
     return dict,slotImages
 
+#====================================================
+# BLACKJACK
 
 #====================================================
 # LOGOUT
