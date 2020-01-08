@@ -5,5 +5,17 @@ Blackjack
 {% endblock %}
 
 {% block body %}
-blackjack page!
+
+{% if mode=="bet" %}
+<!-- display form to place a bet -->
+{% endif %}
+
+{% if mode=="play" %}
+<!-- display ongoing game, hiding hole card, showing all others -->
+{% endif %}
+
+{% if mode=="end" %}
+<!-- display win/loss, showing all cards and indicating who won -->
+{% endif %}
+
 {% endblock %}

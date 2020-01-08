@@ -1,7 +1,7 @@
 from flask import Flask , render_template,request, redirect, url_for, session, flash
 from functools import wraps
 import sqlite3, os, random
-from utl import db_builder, db_manager
+from utl import db_builder, db_manager,carddeck
 import urllib3, json, urllib
 
 app = Flask(__name__)
@@ -237,7 +237,29 @@ def images():
 @login_required
 def blackjack():
     ''' def blackjack(): route for blackjack game '''
-    return render_template("blackjack.html")
+    if   request.method == 'GET':
+        # initial entry into a game, show the bet decision page
+        mode = 'bet'
+        game = {}
+    elif 'bet' in request.form:
+        # user just made a bet, initialize a new game and deduct bet
+        game = session['blackjack']
+
+        mode = 'play'
+    elif 'hit' in request.form:
+        # user just clicked the "hit" button, give them another card and, if necessary, finish game
+        game = session['blackjack']
+        
+        mode = 'play'
+    elif 'stand' in request.form:
+        # user just clicked the "stand" button, finish game
+        game = session['blackjack']
+
+        mode = 'end'
+
+    
+    return render_template("blackjack.html",mode=mode,game=game)
+
 #====================================================
 # LOGOUT
 
