@@ -4,9 +4,94 @@
 	Home
 {% endblock %}
 
+{% block style %}
+<style>
+	body, html {
+  	height: 100%;
+	}
+
+	.bg {
+	  background-image: url("https://livedemo00.template-help.com/wt_52652/images/page1_img1.png");
+	  height: 100vh;
+	  background-position: center;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	}
+</style>
+{% endblock %}
+
 {% block body %}
-<h1>Home</h1>
-<br>
-<h4>User: {{user}}</h4>
-<h4 class="text-success">Money: ${{money}}</h4><br>
+<div class="bg">
+	<br><br><br><br>
+	<img src="../static/label.png">
+	<br><br><br><br>
+	<h2 class="font-weight-bold">Try your fortune!</h2>
+	<br>
+	<h5>Explore our online casino games below, or try your luck at the Wheel of Fortune!</h5>
+	<br><br><br>
+	<div class="banner">
+		<div class="row w-75">
+			<div class="col">
+				<div class="card" style="width: 15rem;">
+					<img class="card-img-top" src="https://livedemo00.template-help.com/wt_52652/images/page1_img3.png" style="width:238px; height:179px;">
+					<div class="card-body">
+						<h5 class="card-title" style="color:#f84854;">Profile</h5>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						<a href="/profile" class="btn btn-lg" style="background-color:#f84854;">View</a>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card" style="width: 15rem;">
+					<img class="card-img-top" src="https://i.ytimg.com/vi/vikRzpCH6ls/maxresdefault.jpg" style="width:238px; height:179px;">
+					<div class="card-body">
+						<h5 class="card-title" style="color:#f84854;">Wheel of Fortune</h5>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						<a href="/" class="btn btn-lg" style="background-color:#f84854;">Spin</a>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card" style="width: 15rem;">
+					<img class="card-img-top" src="https://i1.wp.com/troyerstling.com/wp-content/uploads/2019/05/shutterstock_565543642.jpg?fit=1080%2C720&ssl=1" style="width:238px; height:179px;">
+					<div class="card-body">
+						<h5 class="card-title" style="color:#f84854;">Lottery Tickets</h5>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						<a href="/store" class="btn btn-lg" style="background-color:#f84854;">Buy</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br><br><br><br>
+	<div class="banner" style="background-color:#111111">
+		<br><br>
+		<div class="row" style="width:85%">
+			<div class="col-3">
+				<br><br>
+				<h1 class="text-left" style="color:#f84854; margin-bottom:0;">Featured</h1>
+				<h3 class="text-left">Games</h3>
+				<div class="d-flex justify-content-start">
+					<button class="btn btn-dark my-1" style="background-color:white" ><a href="/games" style="text-decoration:none; color:black;">View All</a></button>
+				</div>
+			</div>
+			<div class="col">
+				<img src="https://images.theconversation.com/files/75985/original/image-20150325-14532-fv0zpy.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip" style="width:250px; height:230px;">
+			</div>
+			<div class="col">
+				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo_BdzgQb0KiBDfSQa7GrcHYjgcGaLar1R-Qqh95X_wBRmGLzv&s" style="width:250px; height:230px;">
+			</div>
+			<div class="col">
+				<img src="https://livedemo00.template-help.com/wt_52652/images/page4_img3.png" style="width:250px; height:230px;">
+			</div>
+		</div>
+		<br><br>
+	</div>
+	<br><br><br><br>
+	<!--
+	<h4>User: {{user}}</h4>
+	<h4 class="text-success">Money: ${{money}}</h4><br>
+	-->
+</div>
+
 {% endblock %}
