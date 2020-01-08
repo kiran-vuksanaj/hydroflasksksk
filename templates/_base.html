@@ -7,7 +7,23 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<link href="https://fonts.googleapis.com/css?family=Baskervville&display=swap" rel="stylesheet">
-		{% block style %} {% endblock %}
+		<style>
+			body, html {
+		  	height: 100%;
+			}
+
+			.bg {
+			  background-image: url("https://livedemo00.template-help.com/wt_52652/images/page1_img1.png");
+			  background-position: center;
+			  background-repeat: no-repeat;
+			  background-size: cover;
+			}
+			{% block style %}
+			.bg {
+				height: 32vh;
+			}
+			{% endblock %}
+		</style>
 	</head>
 	<body>
 		<div class="container-fluid">

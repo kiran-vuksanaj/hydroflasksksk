@@ -137,7 +137,21 @@ def password():
     flash("Password successfully changed!", 'alert-success')
     return redirect("/home")
 
+@app.route("/store")
+@login_required
+def store():
+    return render_template("store.html")
+
+@app.route("/games")
+@login_required
+def games():
+    return render_template("games.html")
+
 #====================================================
+# WHEEL OF FORTUNE AND LOTTERY TICKETS
+
+#====================================================
+# SLOT MACHINE
 
 @app.route("/slotmachine")
 @login_required
@@ -215,7 +229,17 @@ def images():
 
 
 #====================================================
+# LOGOUT
 
+@app.route("/logout")
+@login_required
+def logout():
+    '''def logout(): logging out of session, redirects to login page'''
+    session.clear()
+    flash('You were successfully logged out.', 'alert-success')
+    return redirect('/')
+
+#====================================================
 if __name__ == "__main__":
     db_builder.build_db()
     dict,slotImages = images()

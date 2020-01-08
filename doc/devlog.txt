@@ -54,3 +54,6 @@ tiffanyC -- 2019-01-07 18:45
 
 jackieL -- 2020-01-07 19:24
 		-updated homepage styling
+
+jackieL -- 2020-01-07 19:48
+		-edited formatting for other routes and added database functions for slot machine
