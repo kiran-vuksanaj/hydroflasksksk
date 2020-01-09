@@ -63,3 +63,6 @@ kiranV -- 2020-01-07 20:19
 
 jackieL -- 2020-01-07 20:28
     -edited formatting for games html page
+
+jackieL -- 2020-01-08 20:45
+    -started working on dice game (html, python)

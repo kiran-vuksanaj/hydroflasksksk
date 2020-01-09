@@ -141,11 +141,13 @@ def password():
 @app.route("/store")
 @login_required
 def store():
+    '''def store(): display buying options for user'''
     return render_template("store.html", store="active")
 
 @app.route("/games")
 @login_required
 def games():
+    '''def games(): displays all games in casino'''
     return render_template("games.html", games="active")
 
 #====================================================
@@ -153,6 +155,18 @@ def games():
 
 #====================================================
 # DICE GAME
+
+@app.route("/dice")
+@login_required
+def dice():
+    '''def dice(): allow user to play dice game'''
+    return render_template("dice.html", games="active")
+
+def diceinfo():
+    '''def diceinfo(): creates dictionary for dice betting options, helper function'''
+    dict = {}
+    file = open("diceinfo.csv", "r")
+    return dict
 
 #====================================================
 # SLOT MACHINE
