@@ -229,7 +229,9 @@ def slot():
             rand1 = random.choice(slotImages)
             rand2 = random.choice(slotImages)
             rand3 = random.choice(slotImages)
-            images = [dict[random.choice(slotImages)], dict[random.choice(slotImages)], dict[random.choice(slotImages)], dict[random.choice(slotImages)], dict[random.choice(slotImages)], dict[random.choice(slotImages)]]
+            random.shuffle(slots)
+            # print(slots)
+            images = [dict[slots[0]], dict[slots[1]], dict[slots[2]], dict[slots[3]], dict[slots[4]], dict[slots[5]]]
             if rand1 == rand2 and rand2 == rand3:
                 if rand1 == "lemon":
                      db_manager.updateMoney(session['username'], bet)
@@ -261,6 +263,7 @@ def slot():
 
 dict = {}
 slotImages = []
+slots = []
 list = [35, 25, 20, 10, 6, 4]
 n = 0
 file = open("slotimages.csv", "r") #opens second file with links
@@ -270,6 +273,7 @@ for line in content:
     line = line.strip() #removes \n
     line = line.split(",") #if line does not contain quotes, split by comma
     dict[line[0]] = (line[1]) #key value pair
+    slots.append(line[0])
     for i in range(list[n]):
         slotImages.append(line[0])
     # print(n)
@@ -277,6 +281,7 @@ for line in content:
     n = n + 1
 # print(dict) #testing results
 file.close()
+# print(slots)
 # print("dict here")
 # print(dict)
 # print("slotimages here")
