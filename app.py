@@ -243,6 +243,55 @@ file.close()
 # print("slotimages here")
 # print(slotImages)
 
+#====================================================
+# SCRATCH TICKET
+@app.route("/lottery")
+@login_required
+def lotto():
+    '''def lotto(): scratch ticket generator and handles lotto transactions'''
+    session['winnings']=0
+    db_manager.updateMoney(session['username'],-10)
+    num=[]
+    while len(num)<13:
+        num.append(random.randint(0,9))
+    for i in range(len(num)):
+        if(num[i]==1):
+            num[i]="one.png"
+        if(num[i]==2):
+            num[i]="two.png"
+        if(num[i]==3):
+            num[i]="three.png"
+        if(num[i]==4):
+            num[i]="four.png"
+        if(num[i]==5):
+            num[i]="five.png"
+        if(num[i]==6):
+            num[i]="six.png"
+        if(num[i]==7):
+            num[i]="seven.png"
+        if(num[i]==8):
+            num[i]="eight.png"
+        if(num[i]==9):
+            num[i]="nine.png"
+        if(num[i]==0):
+            num[i]="zero.png"
+    x=["307px","201px","95px","307px","201px","95px","307px","201px","95px","307px","201px","95px"]
+    y=["270px","270px","270px", "340px", "340px","340px","415px","415px","415px","485px","485px","485px"]
+    loop=[0,1,2,3,4,5,6,7,8,9,10,11]
+    for i in range(3):
+        if(num[i*3]<num[i*3+1] and num[i*3+1]<num[i*3+2]):
+            session['winnings']=int(session['winnings'])+10,000
+        if(num[i*3]==num[i*3+1] and num[i*3+1]==num[i*3+2]):
+            session['winnings']=int(session['winnings'])+100,000
+    return render_template("lottery.html",xpos=x,ypos=y,numbers=num,index=loop)
+def prizes():
+    if(session['winnings']==0):
+        flash("No winnings. Better Luck Next Time!",'alert-danger')
+    else:
+        flash("Congratulations! You won $"+ int(session['winnings'])+"!", 'alert-success')
+    db_manager.updateMoney(session['username'],int(session['winnings']))
+    session.pop('winnings')
+    return render_template("lottery.html")
 
 
 #====================================================

@@ -1,0 +1,44 @@
+.box {
+  display: inline-block;
+  -webkit-user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -o-user-select: none;
+ user-select: none;
+ position: relative;
+ cursor: url("../gold.png") 0 18, auto;
+}
+#images{
+  position: absolute;
+  z-index: 1;
+  top:0;
+  right:0;
+}
+
+.numbers{
+  position: absolute;
+  z-index: 2;
+  height:25px;
+  width:25px;
+}
+#canvas {
+  position: absolute;
+  top: 0;
+  right:0;
+  background: transparent;
+  z-index: 3;
+  user-select:none;
+}
+#clear{
+  position: absolute;
+  top:600px;
+  right:500px;
+}
+
+#rules{
+  background-color: #FFFFFF;
+  color: #808ECE;
+  position:absolute;
+  top:200px;
+  right:400px;
+}
