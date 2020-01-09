@@ -4,6 +4,245 @@
 Slot Machine
 {% endblock %}
 
+{% block style %}
+
+@keyframes one {
+  0% {
+    opacity: 1;
+  }
+  16.666% {
+    opacity: 0;
+  }
+  33.333% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  66.666% {
+    opacity: 0;
+  }
+  83.333% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes two {
+  0% {
+    opacity: 0;
+  }
+  16.666% {
+    opacity: 1;
+  }
+  33.333% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  66.666% {
+    opacity: 0;
+  }
+  83.333% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes three {
+  0% {
+    opacity: 0;
+  }
+  16.666% {
+    opacity: 0;
+  }
+  33.333% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  66.666% {
+    opacity: 0;
+  }
+  83.333% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes four {
+  0% {
+    opacity: 0;
+  }
+  16.666% {
+    opacity: 0;
+  }
+  33.333% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  66.666% {
+    opacity: 0;
+  }
+  83.333% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes five {
+  0% {
+    opacity: 0;
+  }
+  16.666% {
+    opacity: 0;
+  }
+  33.333% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  66.666% {
+    opacity: 1;
+  }
+  83.333% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes six {
+  0% {
+    opacity: 0;
+  }
+  16.666% {
+    opacity: 0;
+  }
+  33.333% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  66.666% {
+    opacity: 0;
+  }
+  83.333% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes seven {
+  0% {
+    opacity: 0;
+  }
+  16.666% {
+    opacity: 0;
+  }
+  33.333% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  66.666% {
+    opacity: 0;
+  }
+  83.333% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#fadein {
+  position:relative;
+}
+#fadein img {
+  position:absolute;
+  left:0;
+}
+
+<!-- #fadein img {
+  -webkit-animation-name: cf4FadeInOut;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-duration: 1s;
+
+  -moz-animation-name: cf4FadeInOut;
+  -moz-animation-timing-function: ease-in-out;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-duration: 1;
+
+  -o-animation-name: cf4FadeInOut;
+  -o-animation-timing-function: ease-in-out;
+  -o-animation-iteration-count: 1;
+  -o-animation-duration: 1s;
+
+  animation-name: cf4FadeInOut;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-duration: 1.5s;
+} -->
+
+#fadein img:nth-of-type(1) {
+  animation-name: one;
+  animation-duration: 1s;
+  border: 10px solid yellow;
+}
+#fadein img:nth-of-type(2) {
+  animation-name: two;
+  animation-duration: 1s;
+  border: 10px solid yellow;
+}
+#fadein img:nth-of-type(3) {
+  animation-name: three;
+  animation-duration: 1s;
+  border: 10px solid yellow;
+}
+#fadein img:nth-of-type(4) {
+  animation-name: four;
+  animation-duration: 1s;
+  border: 10px solid yellow;
+}
+#fadein img:nth-of-type(5) {
+  animation-name: five;
+  animation-duration: 1s;
+  border: 10px solid yellow;
+}
+#fadein img:nth-of-type(6) {
+  animation-name: six;
+  animation-duration: 1s;
+  border: 10px solid yellow;
+}
+#fadein img:nth-of-type(7) {
+  animation-name: seven;
+  animation-duration: 1s;
+  border: 10px solid yellow;
+}
+
+
+{% endblock %}
+
 {% block body %}
 
 <h1> Slot Machine <!-- courtesy of https://getbootstrap.com/docs/4.0/components/modal/ -->
@@ -44,21 +283,58 @@ Slot Machine
 </div>
 <br>
 
+
 <div class = "container-fluid">
   <div class = "row w-75">
-    <div class = "text-center col-md-4" style = "border: 10px solid {{ colour }};">
+    <div class = "text-center col-md-4" id = "bord" style = "height: 315px; width: 315px;">
       <div class = "mr-0.5">
-        <img src = "{{ image1 }}" class="img-fluid" alt="Responsive image">
+        {% if check == "true" %}
+          <div id = "fadein">
+            <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "{{ images[0] }}">
+            <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "{{ images[1] }}">
+            <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "{{ images[2] }}">
+            <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "{{ images[3] }}">
+            <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "{{ images[4] }}">
+            <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "{{ images[5] }}">
+            <img id = "last" src = "{{ image1 }}" style = "border: 10px solid {{ colour }};" class="img-fluid" alt="Responsive image">
+          </div>
+        {% else %}
+          <img id = "none" src = "{{ image1 }}" style = "border: 10px solid {{ colour }};" class="img-fluid" alt="Responsive image">
+        {% endif %}
       </div>
     </div>
-    <div class = "text-center col-md-4" style = "border: 10px solid {{ colour }};">
+    <div class = "text-center col-md-4" id = "bord" style = "height: 315px; width: 315px;">
       <div class = "mr-0.5">
-        <img src = "{{ image2 }}" class="img-fluid" alt="Responsive image">
+        {% if check == "true" %}
+          <div id = "fadein">
+            <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "https://cdn4.iconfinder.com/data/icons/slot-machines/512/Lemon-512.png">
+            <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "https://cdn4.iconfinder.com/data/icons/slot-machines/512/Cherry-512.png">
+            <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "https://cdn4.iconfinder.com/data/icons/slot-machines/512/Clover-512.png">
+            <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "https://cdn4.iconfinder.com/data/icons/slot-machines/512/Heart-512.png">
+            <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "https://cdn4.iconfinder.com/data/icons/slot-machines/512/Diamond_1-512.png">
+            <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "https://cdn4.iconfinder.com/data/icons/slot-machines/512/Dollars-512.png">
+            <img id = "last" src = "{{ image2 }}" style = "border: 10px solid {{ colour }};" class="img-fluid" alt="Responsive image">
+          </div>
+        {% else %}
+          <img id = "none" src = "{{ image2 }}" style = "border: 10px solid {{ colour }};" class="img-fluid" alt="Responsive image">
+        {% endif %}
       </div>
     </div>
-    <div class = "text-center col-md-4" style = "border: 10px solid {{ colour }};">
+    <div class = "text-center col-md-4" id = "bord" style = "height: 315px; width: 315px;">
       <div class = "image">
-        <img src = "{{ image3 }}" class="img-fluid" alt="Responsive image">
+        {% if check == "true" %}
+          <div id = "fadein">
+            <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "https://cdn4.iconfinder.com/data/icons/slot-machines/512/Lemon-512.png">
+            <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "https://cdn4.iconfinder.com/data/icons/slot-machines/512/Cherry-512.png">
+            <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "https://cdn4.iconfinder.com/data/icons/slot-machines/512/Clover-512.png">
+            <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "https://cdn4.iconfinder.com/data/icons/slot-machines/512/Heart-512.png">
+            <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "https://cdn4.iconfinder.com/data/icons/slot-machines/512/Diamond_1-512.png">
+            <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "https://cdn4.iconfinder.com/data/icons/slot-machines/512/Dollars-512.png">
+            <img id = "last" src = "{{ image3 }}" style = "border: 10px solid {{ colour }};" class="img-fluid" alt="Responsive image">
+          </div>
+        {% else %}
+          <img id = "none" src = "{{ image3 }}" style = "border: 10px solid {{ colour }};" class="img-fluid" alt="Responsive image">
+        {% endif %}
       </div>
     </div>
   </div>
@@ -74,5 +350,6 @@ Slot Machine
   </div>
 </div>
 <br>
+
 
 {% endblock %}

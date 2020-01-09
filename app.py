@@ -3,6 +3,7 @@ from functools import wraps
 import sqlite3, os, random
 from utl import db_builder, db_manager
 import urllib3, json, urllib
+import random
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
@@ -168,13 +169,14 @@ def slot():
         if bet == "" or int(bet) < 100 or int(bet) > db_manager.getMoney(username):
             bet = 100
             flash("Please place a valid bet.", 'alert-danger')
-            return render_template("slotmachine.html", primarybet = bet, bet = 0, image1 = dict[random.choice(slotImages)], image2 = dict[random.choice(slotImages)], image3 = dict[random.choice(slotImages)], usermoney = db_manager.getMoney(username), money = 0, colour = "yellow", games="active")
+            return render_template("slotmachine.html", primarybet = bet, bet = 0, image1 = dict[random.choice(slotImages)], image2 = dict[random.choice(slotImages)], image3 = dict[random.choice(slotImages)], usermoney = db_manager.getMoney(username), money = 0, colour = "yellow", games="active", check = "false")
         else:
             bet = int(bet)
             db_manager.updateMoney(session['username'], -bet)
             rand1 = random.choice(slotImages)
             rand2 = random.choice(slotImages)
             rand3 = random.choice(slotImages)
+            images = [dict[random.choice(slotImages)], dict[random.choice(slotImages)], dict[random.choice(slotImages)], dict[random.choice(slotImages)], dict[random.choice(slotImages)], dict[random.choice(slotImages)]]
             if rand1 == rand2 and rand2 == rand3:
                 if rand1 == "lemon":
                      db_manager.updateMoney(session['username'], bet)
@@ -198,37 +200,35 @@ def slot():
             else:
                 money = 0
                 colour = "yellow"
-            return render_template("slotmachine.html", primarybet = bet, bet = bet, image1 = dict[rand1], image2 = dict[rand2], image3 = dict[rand3], usermoney = db_manager.getMoney(username), money = money, colour = colour, games="active")
+            return render_template("slotmachine.html", primarybet = bet, bet = bet, image1 = dict[rand1], image2 = dict[rand2], image3 = dict[rand3], usermoney = db_manager.getMoney(username), money = money, colour = colour, games="active", check = "true", images = images)
     else:
         bet = 100
         money = 0
-        return render_template("slotmachine.html", primarybet = bet, bet = 0, image1 = dict[random.choice(slotImages)], image2 = dict[random.choice(slotImages)], image3 = dict[random.choice(slotImages)], usermoney = db_manager.getMoney(username), money = 0, colour = "yellow", games="active")
+        return render_template("slotmachine.html", primarybet = bet, bet = 0, image1 = dict[random.choice(slotImages)], image2 = dict[random.choice(slotImages)], image3 = dict[random.choice(slotImages)], usermoney = db_manager.getMoney(username), money = 0, colour = "yellow", games="active", check = "false")
 
+dict = {}
+slotImages = []
+list = [35, 25, 20, 10, 6, 4]
+n = 0
+file = open("slotimages.csv", "r") #opens second file with links
+content = file.readlines() #parse through files by line
+content = content[1:len(content)] #take out the table heading
+for line in content:
+    line = line.strip() #removes \n
+    line = line.split(",") #if line does not contain quotes, split by comma
+    dict[line[0]] = (line[1]) #key value pair
+    for i in range(list[n]):
+        slotImages.append(line[0])
+    # print(n)
+    # print(list[n])
+    n = n + 1
+# print(dict) #testing results
+file.close()
+# print("dict here")
+# print(dict)
+# print("slotimages here")
+# print(slotImages)
 
-def images():
-    dict =  {}
-    slotImages = []
-    list = [35, 25, 20, 10, 6, 4]
-    n = 0
-    file = open("slotimages.csv", "r") #opens second file with links
-    content = file.readlines() #parse through files by line
-    content = content[1:len(content)] #take out the table heading
-    for line in content:
-        line = line.strip() #removes \n
-        line = line.split(",") #if line does not contain quotes, split by comma
-        dict[line[0]] = (line[1]) #key value pair
-        for i in range(list[n]):
-            slotImages.append(line[0])
-        # print(n)
-        # print(list[n])
-        n = n + 1
-    # print(dict) #testing results
-    file.close()
-    # print("dict here")
-    # print(dict)
-    # print("slotimages here")
-    # print(slotImages)
-    return dict,slotImages
 
 
 #====================================================
@@ -245,6 +245,5 @@ def logout():
 #====================================================
 if __name__ == "__main__":
     db_builder.build_db()
-    dict,slotImages = images()
     app.debug = True
     app.run()
