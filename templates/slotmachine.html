@@ -1,78 +1,78 @@
 {% extends "_base.html" %}
 
- {% block title %}
- Slot Machine
- {% endblock %}
+{% block title %}
+Slot Machine
+{% endblock %}
 
- {% block body %}
+{% block body %}
 
- <h1> Slot Machine <!-- courtesy of https://getbootstrap.com/docs/4.0/components/modal/ -->
-    <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style = "margin-left: 10px; background-color:#f84854;">
-      Info
-    </button>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Instructions for Slot Machine</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body" style = "font-size: 25px;">
-            Getting three in a row gives you a win!<br><br>
-            Lemon: 1x your bet<br>
-            Cherry: 2x your bet<br>
-            Clover: 3x your bet<br>
-            Heart: 4x your bet<br>
-            Diamond: 5x your bet<br>
-            Dollars: 6x your bet<br>
-            <br>
-          </div>
+<h1> Slot Machine <!-- courtesy of https://getbootstrap.com/docs/4.0/components/modal/ -->
+  <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style = "margin-left: 10px; background-color:#f84854;">
+    Info
+  </button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Instructions for Slot Machine</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style = "font-size: 25px;">
+          Getting three in a row gives you a win!<br><br>
+          Lemon: 1x your bet<br>
+          Cherry: 2x your bet<br>
+          Clover: 3x your bet<br>
+          Heart: 4x your bet<br>
+          Diamond: 5x your bet<br>
+          Dollars: 6x your bet<br>
+          <br>
         </div>
       </div>
     </div>
- </h1>
+  </div>
+</h1>
+
+<h5 style = "color: green;"> My Balance: ${{ usermoney }} </h5>
+<div class="w-25 p-3">
+  <form action = "/slotmachine" method = "GET">
+    <label for="slotbet" class="font-weight-bold text-light"> Make Your Bet: </label>
+    <input name="slotbet" type="number" class="form-control" id="slotbet" value = "{{ primarybet }}"><br>
+    <button type="submit" class="btn" style="background-color:#f84854;" data-toggle = "tooltip" data-placement = "right" title = "Press to consecutively place the same bet and spin."> Let's Go! </button>
+  </form>
+</div>
 <br>
- <h5 style = "color: green;"> My Balance: ${{ usermoney }} </h5>
- <div class="w-25 p-3">
-   <form action = "/slotmachine" method = "GET">
-     <label for="slotbet" class="font-weight-bold text-light"> Make Your Bet: </label>
-     <input name="slotbet" type="number" class="form-control" id="slotbet" value = "{{ primarybet }}"><br>
-     <button type="submit" class="btn" style="background-color:#f84854;" data-toggle = "tooltip" data-placement = "right" title = "Press to consecutively place the same bet and spin."> Let's Go! </button>
-   </form>
- </div>
- <br>
 
- <div class = "container-fluid">
-   <div class = "row w-75">
-     <div class = "text-center col-md-4" style = "border: 10px solid {{ colour }};">
-       <div class = "mr-0.5">
-         <img src = "{{ image1 }}" class="img-fluid" alt="Responsive image">
-       </div>
-     </div>
-     <div class = "text-center col-md-4" style = "border: 10px solid {{ colour }};">
-       <div class = "mr-0.5">
-         <img src = "{{ image2 }}" class="img-fluid" alt="Responsive image">
-       </div>
-     </div>
-     <div class = "text-center col-md-4" style = "border: 10px solid {{ colour }};">
-       <div class = "image">
-         <img src = "{{ image3 }}" class="img-fluid" alt="Responsive image">
-       </div>
-     </div>
-   </div>
- </div>
- <br>
+<div class = "container-fluid">
+  <div class = "row w-75">
+    <div class = "text-center col-md-4" style = "border: 10px solid {{ colour }};">
+      <div class = "mr-0.5">
+        <img src = "{{ image1 }}" class="img-fluid" alt="Responsive image">
+      </div>
+    </div>
+    <div class = "text-center col-md-4" style = "border: 10px solid {{ colour }};">
+      <div class = "mr-0.5">
+        <img src = "{{ image2 }}" class="img-fluid" alt="Responsive image">
+      </div>
+    </div>
+    <div class = "text-center col-md-4" style = "border: 10px solid {{ colour }};">
+      <div class = "image">
+        <img src = "{{ image3 }}" class="img-fluid" alt="Responsive image">
+      </div>
+    </div>
+  </div>
+</div>
+<br>
 
- <div class = "row justify-content-center">
-   <div class = "card" style = "width: 30rem; height: 10rem;">
-     <div class = "card-body">
-       <h2> <div class = "font-weight-bold" style = "color: red; size: 20px;"> Your Bet: ${{ bet }} </div> </h2>
-       <h2> <div class = "font-weight-bold" style = "color: red; size: 20px;"> Your Win: ${{ money }} </div> </h2>
-     </div>
-   </div>
- </div>
- <br>
+<div class = "row justify-content-center">
+  <div class = "card" style = "width: 30rem; height: 10rem;">
+    <div class = "card-body">
+      <h2> <div class = "font-weight-bold" style = "color: red; size: 20px;"> Your Bet: ${{ bet }} </div> </h2>
+      <h2> <div class = "font-weight-bold" style = "color: red; size: 20px;"> Your Win: ${{ money }} </div> </h2>
+    </div>
+  </div>
+</div>
+<br>
 
- {% endblock %}
+{% endblock %}
