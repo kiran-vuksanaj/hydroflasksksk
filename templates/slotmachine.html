@@ -799,7 +799,7 @@ Slot Machine
   </div>
 </h1>
 
-<h5 style = "color: green;"> My Balance: ${{ usermoney }} </h5>
+<h4 class="text-success">Your Money: ${{ usermoney }}</h4>
 <div class="w-25 p-3">
   <form action = "/slotmachine" method = "GET">
     <label for="slotbet" class="font-weight-bold text-light"> Make Your Bet: </label>
@@ -812,10 +812,10 @@ Slot Machine
 
 <div class = "container-fluid">
   <div class = "row w-75">
-    <div class = "text-center col-md-4" id = "bord" style = "height: 315px; width: 315px;">
+    <div class = "text-center col-md-4" id = "bord" style = "height: 315px;">
       <div class = "mr-0.5">
         {% if check == "true" %}
-          <div id = "fadein" style = "height: 315px; width: 315px; border: 10px solid {{ colour }}; background-color: white;">
+          <div id = "fadein" style = "height: 315px; width: 315px; border: 10px solid {{ colour }}; background-color: #ddd;">
             <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "{{ images[0] }}">
             <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "{{ images[1] }}">
             <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "{{ images[2] }}">
@@ -825,14 +825,14 @@ Slot Machine
             <img id = "last" src = "{{ image1 }}" class="img-fluid" alt="Responsive image">
           </div>
         {% else %}
-          <img id = "none" src = "{{ image1 }}" style = "border: 10px solid #FFD700; background-color: white;" class="img-fluid" alt="Responsive image">
+          <img id = "none" src = "{{ image1 }}" style = "border: 10px solid #FFD700; background-color: #ddd;" class="img-fluid" alt="Responsive image">
         {% endif %}
       </div>
     </div>
-    <div class = "text-center col-md-4" id = "bord" style = "height: 315px; width: 315px;">
+    <div class = "text-center col-md-4" id = "bord" style = "height: 315px;">
       <div class = "mr-0.5">
         {% if check == "true" %}
-          <div id = "fadein" style = "height: 315px; width: 315px; border: 10px solid {{ colour }}; background-color: white;">
+          <div id = "fadein" style = "height: 315px; width: 315px; border: 10px solid {{ colour }}; background-color: #ddd;">
             <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "https://cdn4.iconfinder.com/data/icons/slot-machines/512/Lemon-512.png">
             <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "https://cdn4.iconfinder.com/data/icons/slot-machines/512/Cherry-512.png">
             <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "https://cdn4.iconfinder.com/data/icons/slot-machines/512/Clover-512.png">
@@ -842,14 +842,14 @@ Slot Machine
             <img id = "last" src = "{{ image2 }}" class="img-fluid" alt="Responsive image">
           </div>
         {% else %}
-          <img id = "none" src = "{{ image2 }}" style = "border: 10px solid #FFD700; background-color: white;" class="img-fluid" alt="Responsive image">
+          <img id = "none" src = "{{ image2 }}" style = "border: 10px solid #FFD700; background-color: #ddd;" class="img-fluid" alt="Responsive image">
         {% endif %}
       </div>
     </div>
-    <div class = "text-center col-md-4" id = "bord" style = "height: 315px; width: 315px;">
+    <div class = "text-center col-md-4" id = "bord" style = "height: 315px;">
       <div class = "image">
         {% if check == "true" %}
-          <div id = "fadein" style = "height: 315px; width: 315px; border: 10px solid {{ colour }}; background-color: white;">
+          <div id = "fadein" style = "height: 315px; width: 315px; border: 10px solid {{ colour }}; background-color: #ddd;">
             <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "{{ images[5] }}">
             <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "{{ images[4] }}">
             <img id = "top" class="img-fluid" alt="Responsive image" style = "position: absolute; opacity: 0;" src = "{{ images[3] }}">
@@ -859,23 +859,24 @@ Slot Machine
             <img id = "last" src = "{{ image3 }}" class="img-fluid" alt="Responsive image">
           </div>
         {% else %}
-          <img id = "none" src = "{{ image3 }}" style = "border: 10px solid #FFD700; background-color: white;" class="img-fluid" alt="Responsive image">
+          <img id = "none" src = "{{ image3 }}" style = "border: 10px solid #FFD700; background-color: #ddd;" class="img-fluid" alt="Responsive image">
         {% endif %}
       </div>
+    </div>
+  </div>
+  <br><br>
+
+<h2> <div class = "font-weight-bold" style = "color: #f84854;"> Results </div></h2>
+<div class = "row justify-content-center">
+  <div class = "card" style = "width: 30rem; height: 8rem; background-color: #ddd; position: relative;">
+    <div class = "card-body">
+      <h3> <div class = "font-weight-bold" style = "color: black;"> You bet: ${{ bet }} </div> </h3>
+      <h3> <div class = "font-weight-bold" style = "color: black;"> You earned: ${{ money }} </div> </h3>
     </div>
   </div>
 </div>
 <br>
 
-<div class = "row justify-content-center">
-  <div class = "card" style = "width: 30rem; height: 10rem;">
-    <div class = "card-body">
-      <h2> <div class = "font-weight-bold" style = "color: red; size: 20px;"> Your Bet: ${{ bet }} </div> </h2>
-      <h2> <div class = "font-weight-bold" style = "color: red; size: 20px;"> Your Win: ${{ money }} </div> </h2>
-    </div>
-  </div>
-</div>
-<br>
 
 
 {% endblock %}

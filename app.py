@@ -214,11 +214,11 @@ def diceH(dice, options):
 @login_required
 def slot():
     '''def slot(): placing and checking bets'''
-    print("here's bet")
+    # print("here's bet")
     username = session['username']
     if request.args.get('slotbet'):
         bet = request.args.get('slotbet')
-        print(bet)
+        # print(bet)
         if bet == "" or int(bet) < 100 or int(bet) > db_manager.getMoney(username):
             bet = 100
             flash("Please place a valid bet.", 'alert-danger')
