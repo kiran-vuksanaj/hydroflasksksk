@@ -1,4 +1,4 @@
-Team Hydroflask
+git Team Hydroflask
 Sofdev1 pd1
 P02 -- Devlog
 2019-12-26
@@ -66,3 +66,8 @@ jackieL -- 2020-01-07 20:28
 
 jackieL -- 2020-01-08 20:45
     -started working on dice game (html, python)
+
+tiffanyC -- 2020-01-08 21:09
+    -slot machine now has image transition graphics as if the machine is spinning between slots
+    -border colors of the images also match: yellow normally, and green when there's a win
+    -merged my branch 'wikipedia' to main branch
