@@ -243,13 +243,18 @@ def blackjack():
         game = {}
     elif 'bet' in request.form:
         # user just made a bet, initialize a new game and deduct bet
-        game = session['blackjack']
-
+        game = {}
+        game['bet'] = int(request.form['bet'])
+        game['deck'] = cards_api.newdeck()
+        game['dealer_cards'] = cards_api.drawcards(game['deck'],2)
+        game['player_cards'] = cards_api.drawcards(game['deck'],2)
+        db_manager.updateMoney( session['username'], -game['bet'] )
+        # TODO: initial blackjack
         mode = 'play'
     elif 'hit' in request.form:
         # user just clicked the "hit" button, give them another card and, if necessary, finish game
         game = session['blackjack']
-        
+        newcard = carddeck
         mode = 'play'
     elif 'stand' in request.form:
         # user just clicked the "stand" button, finish game
