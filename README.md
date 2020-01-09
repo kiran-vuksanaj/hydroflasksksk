@@ -17,3 +17,16 @@ Welcome to the Black Diamond Casino! Here you will find a variety of betting gam
 <!-- TODO: KEY ACQUISITION/INSTALLATION INSTRUCTIONS-->
 - Diceful: no key is necessary for usage
 - Deck of cards: no key is necessary for usage
+
+### How to Run
+<!-- TODO: add details!!! -->
+- `git clone https://github.com/kiran-vuksanajhydroflasksksk.git`
+- `python3 -m venv blackdiamond_venv`
+- `. blackdiamond_venv/bin/activate` - note the space!
+- `cd hydroflasksksk/`
+- `pip3 install -r doc/requirements.txt`
+- `python3 app.py`
+
+when complete
+- `Ctrl+C`
+- `deactivate`

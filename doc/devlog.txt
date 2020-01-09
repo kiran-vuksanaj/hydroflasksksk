@@ -102,3 +102,6 @@ amandaZ -- 2020-01-08 10:17
 amandaZ -- 2020-01-08 21:58
   -updated Devlog
   -moved everything I was working on into this repo
+
+kiranV -- 2020-01-09 08:37
+    -updated README.md to match requirements as indicated by final deliverables (Task the F-I-F)
