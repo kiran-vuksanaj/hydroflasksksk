@@ -222,7 +222,7 @@ def slot():
         if bet == "" or int(bet) < 100 or int(bet) > db_manager.getMoney(username):
             bet = 100
             flash("Please place a valid bet.", 'alert-danger')
-            return render_template("slotmachine.html", primarybet = bet, bet = 0, image1 = dict[random.choice(slotImages)], image2 = dict[random.choice(slotImages)], image3 = dict[random.choice(slotImages)], usermoney = db_manager.getMoney(username), money = 0, colour = "yellow", games="active", check = "false")
+            return render_template("slotmachine.html", primarybet = bet, bet = 0, image1 = dict[random.choice(slotImages)], image2 = dict[random.choice(slotImages)], image3 = dict[random.choice(slotImages)], usermoney = db_manager.getMoney(username), money = 0, colour = "#FFD700", games="active", check = "false")
         else:
             bet = int(bet)
             db_manager.updateMoney(session['username'], -bet)
@@ -252,12 +252,12 @@ def slot():
                 colour = "green"
             else:
                 money = 0
-                colour = "yellow"
+                colour = "#FFD700"
             return render_template("slotmachine.html", primarybet = bet, bet = bet, image1 = dict[rand1], image2 = dict[rand2], image3 = dict[rand3], usermoney = db_manager.getMoney(username), money = money, colour = colour, games="active", check = "true", images = images)
     else:
         bet = 100
         money = 0
-        return render_template("slotmachine.html", primarybet = bet, bet = 0, image1 = dict[random.choice(slotImages)], image2 = dict[random.choice(slotImages)], image3 = dict[random.choice(slotImages)], usermoney = db_manager.getMoney(username), money = 0, colour = "yellow", games="active", check = "false")
+        return render_template("slotmachine.html", primarybet = bet, bet = 0, image1 = dict[random.choice(slotImages)], image2 = dict[random.choice(slotImages)], image3 = dict[random.choice(slotImages)], usermoney = db_manager.getMoney(username), money = 0, colour = "#FFD700", games="active", check = "false")
 
 dict = {}
 slotImages = []

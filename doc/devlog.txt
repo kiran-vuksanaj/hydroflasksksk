@@ -1,4 +1,4 @@
-Team Hydroflask
+git Team Hydroflask
 Sofdev1 pd1
 P02 -- Devlog
 2019-12-26
@@ -19,21 +19,10 @@ kiranV -- 2020-01-06 19:46
       -revised assignment of roles
       -clarified description of Texas Hold'em, separated discussion of turn-based first-level goal from AJAX live updating
       -modified a couple database row's types to enable ease of use while integrating with APIs
-amandaZ -- 2020-01-06 18:36
-    -prepared the png, downloads, and photos for the coin and the lotto tickets
-    -photoshopped the pictures for layering later
 
 jackieL -- 2020-01-06 20:44
     -added login and signup html pages with appropriate flask routes, and database functions, added bootstrap styling, created database tables
 
-amandaZ -- 2020-10-06 22:14
-    -researched how to get eraser effect
-    -got canvas setup to work
-    -mouse is able to erase the ticket but the bottom ticket is not aligned with top layering
-
-amandaZ -- 2020-10-06 23:32
-      -got two layers of lottery to align and scratching ticket works
-      -created css file for styling the tickets
 jackieL -- 2020-01-07 08:09
 		-uploaded preliminary pictures for website
 
@@ -46,9 +35,6 @@ tiffanyC -- 2020-01-07 08:13
 jackieL -- 2020-01-07 08:18
 		-added home and profile page with styling and appropriate database functions
 
-amandaZ -- 2020-01-07 08:34
-    -due to a tragic accident of deleting css file, I lost the functionality of the ticket\
-    -however, I was able to redo it and it works know
 
 tiffanyC -- 2020-01-07 08:40
     -slot machine generates random images from dictionary each call
@@ -66,10 +52,6 @@ tiffanyC -- 2019-01-07 18:45
     -changed layout of slotmachine.html for better user experience
     -viewers can see money updates on slotmachine.html
 
-amandaZ -- 2019-01-07 19:23
-    -had to go on shutter shock and make all the number pngs
-    -styled numbers in css
-
 jackieL -- 2020-01-07 19:24
     -updated homepage styling
 
@@ -82,15 +64,6 @@ kiranV -- 2020-01-07 20:19
 jackieL -- 2020-01-07 20:28
     -edited formatting for games html page
 
-amandaZ -- 2019-01-07 21:47
-    -made a random number generator for the lotto ticket
-    -figured out the perfect coordinates of where to place the number on ticket
-
-amandaZ -- 2020-01-08 20:45
-    -started working on wheel of fortune
-      -found image for wheel of fortune
-      -figured out algorithm to detect which spinner it will land on with jlin
-
 jackieL -- 2020-01-08 20:45
     -started working on dice game (html, python)
 
@@ -99,6 +72,14 @@ amandaZ -- 2020-01-08 10:17
     -made scratch all button (works)
     -made claim prize button (ran into bugs)
     
+tiffanyC -- 2020-01-08 21:09
+    -slot machine now has image transition graphics as if the machine is spinning between slots
+    -border colors of the images also match: yellow normally, and green when there's a win
+    -merged my branch 'wikipedia' to main branch
+
 amandaZ -- 2020-01-08 21:58
   -updated Devlog
   -moved everything I was working on into this repo
+
+kiranV -- 2020-01-09 08:37
+    -updated README.md to match requirements as indicated by final deliverables (Task the F-I-F)
