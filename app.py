@@ -156,17 +156,56 @@ def games():
 #====================================================
 # DICE GAME
 
-@app.route("/dice")
+@app.route("/dice", methods=["GET", "POST"])
 @login_required
 def dice():
-    '''def dice(): allow user to play dice game'''
-    return render_template("dice.html", games="active")
+    '''def dice(): allows user to place bet for dice game'''
+    user = session['username']
+    if request.method == 'GET':
+        money = db_manager.getMoney(user)
+        return render_template("dice.html", betting=True, money=money)
+    else:
+        bet = int(request.form['bet'])
+        options = request.form.getlist('options')
+        if len(options) == 0 or not db_manager.checkBet(user, bet):
+            flash("Please enter a valid bet and choose at least one betting option!", 'alert-danger')
+            return redirect(url_for("dice"), code=303)
+        u = urllib.request.urlopen("http://roll.diceapi.com/json/3d6")
+        response = json.loads(u.read())['dice']
+        dice = []
+        for roll in response:
+            dice.append(roll['value'])
+        multiplier = diceH(dice, options)
+        amount = multiplier * bet
+        db_manager.updateMoney(user, amount)
+        money = db_manager.getMoney(user)
+        return render_template("dice.html", dice=dice, betting=False, money=money, options=options, bet=bet, amount=amount)
 
-def diceinfo():
-    '''def diceinfo(): creates dictionary for dice betting options, helper function'''
-    dict = {}
-    file = open("diceinfo.csv", "r")
-    return dict
+def diceH(dice, options):
+    '''def diceH(): helper function to check dice rolls'''
+    print(options)
+    multiplier = [60, 20, 18, 12, 8, 6, 6, 6, 6, 8, 12, 18, 20, 60]
+    sum = 0;
+    total_mult = 0
+    for die in dice:
+        sum += int(die)
+    for option in options:
+        if option == "big" :
+            if sum >= 11 and sum <= 17:
+                total_mult += 2
+        elif option == "small":
+            if sum <= 10 and sum >= 4:
+                total_mult += 2
+        elif "triple" in option:
+            num = option[-1]
+            if dice[0] == num and dice[1] == num and dice[2] == num:
+                total_mult += 180
+        else:
+            num = int(option[3:])
+            if sum == num:
+                total_mult += multiplier[num - 4]
+    total_mult -= len(options)
+    return total_mult
 
 #====================================================
 # SLOT MACHINE
@@ -245,6 +284,7 @@ file.close()
 
 #====================================================
 # SCRATCH TICKET
+
 @app.route("/lottery")
 @login_required
 def lotto():
@@ -284,6 +324,7 @@ def lotto():
         if(num[i*3]==num[i*3+1] and num[i*3+1]==num[i*3+2]):
             session['winnings']=int(session['winnings'])+100,000
     return render_template("lottery.html",xpos=x,ypos=y,numbers=num,index=loop)
+
 def prizes():
     if(session['winnings']==0):
         flash("No winnings. Better Luck Next Time!",'alert-danger')
@@ -292,7 +333,6 @@ def prizes():
     db_manager.updateMoney(session['username'],int(session['winnings']))
     session.pop('winnings')
     return render_template("lottery.html")
-
 
 #====================================================
 # LOGOUT
