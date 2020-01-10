@@ -233,6 +233,26 @@ def images():
 #====================================================
 # BLACKJACK
 
+def blackjack_cardtotal(cards):
+    '''def cardtotal(cards): calculate blackjack value of list of cards '''
+    total = 0
+    aces = 0
+    for card in cards:
+        if card['value'] == 'ACE':
+            aces += 1
+            total += 11
+        else:
+            try:
+                value = int(card['value'])
+            except ValueError:
+                # value for all face cards is 10
+                value = 10
+            total += value
+    while total > 21 and aces > 0:
+        total -= 10
+        aces -= 1
+    return total
+
 @app.route("/blackjack")
 @login_required
 def blackjack():
@@ -245,16 +265,18 @@ def blackjack():
         # user just made a bet, initialize a new game and deduct bet
         game = {}
         game['bet'] = int(request.form['bet'])
-        game['deck'] = cards_api.newdeck()
-        game['dealer_cards'] = cards_api.drawcards(game['deck'],2)
-        game['player_cards'] = cards_api.drawcards(game['deck'],2)
+        game['deck'] = carddeck.newdeck()
+        game['dealer_cards'] = carddeck.drawcards(game['deck'],2)
+        game['player_cards'] = carddeck.drawcards(game['deck'],2)
         db_manager.updateMoney( session['username'], -game['bet'] )
         # TODO: initial blackjack
         mode = 'play'
     elif 'hit' in request.form:
         # user just clicked the "hit" button, give them another card and, if necessary, finish game
         game = session['blackjack']
-        newcard = carddeck
+        newcard = carddeck.drawcards(game['deck'],1)
+        game['player_cards'] += newcard
+        
         mode = 'play'
     elif 'stand' in request.form:
         # user just clicked the "stand" button, finish game
