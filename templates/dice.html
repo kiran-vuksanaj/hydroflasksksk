@@ -5,7 +5,29 @@
 {% endblock %}
 
 {% block body %}
-<h1>Dice</h1>
+<h1>Dice
+	<button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style = "margin-left: 10px; background-color:#f84854;">
+		Info
+	</button>
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Instructions for Dice or "Sic Bo"</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" style = "font-size: 25px;">
+					This popup is under construction; instructions will be up at a later date.
+					<br>
+					Thank you for your patience!
+					<br>
+				</div>
+			</div>
+		</div>
+	</div>
+</h1>
 <div class="w-100 p-3">
 	<h4 class="text-success">Your Money: ${{ money }}</h4>
 	{% if betting %}
