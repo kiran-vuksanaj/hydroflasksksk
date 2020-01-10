@@ -91,3 +91,6 @@ tiffanyC -- 2020-01-08 12:18
     -added styling to slotmachine.html to match front-end visuals in dice.html
     -fixed border colors problem
     -tried testing with better animations but failed so I'm leaving it for extras
+
+jackieL -- 2020-01-10 00:19
+    -changed styling for slot machine
