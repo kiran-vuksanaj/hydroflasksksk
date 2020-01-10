@@ -87,7 +87,7 @@ kiranV -- 2020-01-09 08:37
 jackieL -- 2020-01-09 08:42
     -added the foundation of the dice game with most betting options
 
-tiffanyC -- 2020-01-08 12:18
+tiffanyC -- 2020-01-09 12:18
     -added styling to slotmachine.html to match front-end visuals in dice.html
     -fixed border colors problem
     -tried testing with better animations but failed so I'm leaving it for extras
