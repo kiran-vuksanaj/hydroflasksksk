@@ -276,15 +276,39 @@ def blackjack():
         game = session['blackjack']
         newcard = carddeck.drawcards(game['deck'],1)
         game['player_cards'] += newcard
-        
-        mode = 'play'
+        if blackjack_cardtotal(game['player_cards']) > 21:
+            flash('Bust','alert-danger')
+            mode = 'end'
+        else:
+            mode = 'play'
     elif 'stand' in request.form:
         # user just clicked the "stand" button, finish game
         game = session['blackjack']
-
+        # play dealer's part
+        player_total = blackjack_cardtotal(game['player_cards'])
+        dealer_total = blackjack_cardtotal(game['dealer_cards'])
+        while dealer_total < 17:
+            game['dealer_cards'] += carddeck.drawcards(game['deck'],1)
+            print('card drawn for dealer: ',game['dealer_cards'][-1]['code'])
+            delaer_total = cardtotal( game['dealer_cards'] )
+        if dealer_total > 21:
+            flash('Dealer Bust! You Win!','alert-success')
+            db_manager.updateMoney( session['username'], 2*game['bet'] )
+        elif player_total > dealer_total:
+            flash('You Win!','alert-success')
+            db_manager.updateMoney( session['username'], 2*game['bet'] )
+        elif player_total == dealer_total:
+            flash('Push (tie)','alert-info')
+            db_manager.updateMoney( session['username'], game['bet'] )
+        else:
+            flash('You lose.','alert-danger')
         mode = 'end'
 
-    
+    if mode == 'end':
+        del session['blackjack']
+    else:
+        session['blackjack'] = game
+        
     return render_template("blackjack.html",mode=mode,game=game)
 
 #====================================================
