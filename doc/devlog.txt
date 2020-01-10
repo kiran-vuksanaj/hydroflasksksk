@@ -94,3 +94,7 @@ tiffanyC -- 2020-01-09 12:18
 
 jackieL -- 2020-01-10 00:19
     -changed styling for slot machine
+
+tiffanyC -- 2020-01-10 12:24
+    -added wikipedia descriptions for all games on branch 'wikipedia' using the python wikipedia import
+    
