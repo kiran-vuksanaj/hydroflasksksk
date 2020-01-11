@@ -97,3 +97,6 @@ jackieL -- 2020-01-10 00:19
 
 jackieL -- 2020-01-11 00:33
     -started working on roulette game
+
+jackieL -- 2020-01-11 14:45
+    -finished roulette html
