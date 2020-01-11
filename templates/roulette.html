@@ -1,0 +1,61 @@
+{% extends "_base.html" %}
+
+{% block title %}
+	Roulette
+{% endblock %}
+
+{% block body %}
+<h1>Roulette</h1>
+<div class="w-100 p-3">
+  <h4 class="text-success">Your Money: ${{ money }}</h4>
+  {% if betting %}
+  <form action="/roulette" method="POST">
+    <div class="form-group">
+      <label for="bet">Please place a bet that is at least $100:</label>
+      <input name="bet" type="number" class="form-control w-25"  min="100" id="bet" value=100>
+    </div><br>
+		<div class="form-check" style="width:85%;" id="options">
+			<h4>Betting Options</h4><br>
+      <div class="row">
+        {% for key, value in one %}
+        <div class="col" style="padding:0">
+						<div class="card border-white rounded-0">
+							<div class="card-body" style="margin:0; background-color:{{value}};">
+								<input type="checkbox" name="{{key}}" id={{key}}>
+								<label class="checklabel" for="{{key}}">{{key}}</label>
+							</div>
+						</div>
+        </div>
+        {% endfor %}
+      </div>
+			<div class="row">
+        {% for key, value in two %}
+        <div class="col" style="padding:0">
+						<div class="card border-white rounded-0">
+							<div class="card-body" style="margin:0; background-color:{{value}};">
+								<input type="checkbox" name="{{key}}" id={{key}}>
+								<label class="checklabel" for="{{key}}">{{key}}</label>
+							</div>
+						</div>
+        </div>
+        {% endfor %}
+      </div>
+			<div class="row">
+        {% for key, value in three %}
+        <div class="col" style="padding:0">
+						<div class="card border-white rounded-0">
+							<div class="card-body" style="margin:0; background-color:{{value}};">
+								<input type="checkbox" name="{{key}}" id={{key}}>
+								<label class="checklabel" for="{{key}}">{{key}}</label>
+							</div>
+						</div>
+        </div>
+        {% endfor %}
+      </div>
+		</div>
+  </form>
+  {% else %}
+
+  {% endif %}
+</div>
+{% endblock %}

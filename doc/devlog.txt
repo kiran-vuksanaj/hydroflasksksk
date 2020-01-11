@@ -94,3 +94,6 @@ tiffanyC -- 2020-01-09 12:18
 
 jackieL -- 2020-01-10 00:19
     -changed styling for slot machine
+
+jackieL -- 2020-01-11 00:33
+    -started working on roulette game

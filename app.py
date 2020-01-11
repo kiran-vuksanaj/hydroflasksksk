@@ -151,7 +151,7 @@ def games():
     return render_template("games.html", games="active")
 
 #====================================================
-# WHEEL OF FORTUNE AND LOTTERY TICKETS
+# WHEEL OF FORTUNE
 
 #====================================================
 # DICE GAME
@@ -163,7 +163,7 @@ def dice():
     user = session['username']
     if request.method == 'GET':
         money = db_manager.getMoney(user)
-        return render_template("dice.html", betting=True, money=money)
+        return render_template("dice.html", betting=True, money=money, games="active")
     else:
         bet = int(request.form['bet'])
         options = request.form.getlist('options')
@@ -178,12 +178,15 @@ def dice():
         multiplier = diceH(dice, options)
         amount = multiplier * bet
         db_manager.updateMoney(user, amount)
+        lost = False
+        if (amount < 0):
+            lost=True
+            amount *= -1
         money = db_manager.getMoney(user)
-        return render_template("dice.html", dice=dice, betting=False, money=money, options=options, bet=bet, amount=amount)
+        return render_template("dice.html", dice=dice, betting=False, money=money, options=options, bet=len(options)*bet, amount=amount, lost=lost, games="active")
 
 def diceH(dice, options):
     '''def diceH(): helper function to check dice rolls'''
-    print(options)
     multiplier = [60, 20, 18, 12, 8, 6, 6, 6, 6, 8, 12, 18, 20, 60]
     sum = 0;
     total_mult = 0
@@ -206,6 +209,42 @@ def diceH(dice, options):
                 total_mult += multiplier[num - 4]
     total_mult -= len(options)
     return total_mult
+
+#====================================================
+# ROULETTE
+
+#code to build bulk of roulette betting options
+row_one = {}
+row_two = {}
+row_three = {}
+file = open("roulette.csv", "r") #opens second file with links
+content = file.readlines() #parse through files by line
+content = content[1:len(content)] #take out the table heading
+for line in content:
+    line = line.strip() #removes \n
+    line = line.split(",") #if line does not contain quotes, split by comma
+    if (line[0] == '1'):
+        row_one[line[1]] = (line[2])
+    elif (line[0] == '2'):
+        row_two[line[1]] = (line[2])
+    else:
+        row_three[line[1]] = (line[2])
+print(row_one)
+print(row_two)
+print(row_three)
+file.close()
+
+@app.route("/roulette", methods=["GET", "POST"])
+@login_required
+def roulette():
+    '''def roulette(): allows user to place bet for roulette game'''
+    user = session['username']
+    if request.method == 'GET':
+        money = db_manager.getMoney(user)
+        return render_template("roulette.html", betting=True, money=money, games="active", one=row_one.items(), two=row_two.items(), three=row_three.items())
+    else:
+        money = db_manager.getMoney(user)
+        return render_template("roulette.html", money=money, games="active")
 
 #====================================================
 # SLOT MACHINE
@@ -328,7 +367,7 @@ def lotto():
             session['winnings']=int(session['winnings'])+10,000
         if(num[i*3]==num[i*3+1] and num[i*3+1]==num[i*3+2]):
             session['winnings']=int(session['winnings'])+100,000
-    return render_template("lottery.html",xpos=x,ypos=y,numbers=num,index=loop)
+    return render_template("lottery.html",xpos=x,ypos=y,numbers=num,index=loop,store="active")
 
 def prizes():
     if(session['winnings']==0):
@@ -337,7 +376,7 @@ def prizes():
         flash("Congratulations! You won $"+ int(session['winnings'])+"!", 'alert-success')
     db_manager.updateMoney(session['username'],int(session['winnings']))
     session.pop('winnings')
-    return render_template("lottery.html")
+    return render_template("lottery.html",store="active")
 
 #====================================================
 # LOGOUT
