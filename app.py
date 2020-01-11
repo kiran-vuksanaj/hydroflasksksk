@@ -217,6 +217,7 @@ def diceH(dice, options):
 row_one = {}
 row_two = {}
 row_three = {}
+all_rows = {}
 file = open("roulette.csv", "r") #opens second file with links
 content = file.readlines() #parse through files by line
 content = content[1:len(content)] #take out the table heading
@@ -229,9 +230,8 @@ for line in content:
         row_two[line[1]] = (line[2])
     else:
         row_three[line[1]] = (line[2])
-print(row_one)
-print(row_two)
-print(row_three)
+    all_rows[line[1]] = (line[2])
+    all_rows['0'] = 'green'
 file.close()
 
 @app.route("/roulette", methods=["GET", "POST"])
@@ -243,8 +243,56 @@ def roulette():
         money = db_manager.getMoney(user)
         return render_template("roulette.html", betting=True, money=money, games="active", one=row_one.items(), two=row_two.items(), three=row_three.items())
     else:
+        bet = int(request.form['bet'])
+        options = request.form.getlist('options')
+        if len(options) == 0 or not db_manager.checkBet(user, bet):
+            flash("Please enter a valid bet and choose at least one betting option!", 'alert-danger')
+            return redirect(url_for("roulette"), code=303)
+        rand = random.randrange(1, 37)
+        multiplier = rouletteH(rand, options)
+        amount = multiplier * bet
+        db_manager.updateMoney(user, amount)
+        lost = False
+        if (amount < 0):
+            lost=True
+            amount *= -1
         money = db_manager.getMoney(user)
-        return render_template("roulette.html", money=money, games="active")
+        color = all_rows[str(rand)]
+        return render_template("roulette.html", betting=False, money=money, options=options, bet=len(options)*bet, amount=amount, lost=lost, result=rand, color=color, games="active")
+
+def rouletteH(result, options):
+    total_mult = 0
+    for option in options:
+        if "single" in option:
+            num = int(option[6:])
+            if num == result:
+                total_mult += 36
+        elif "dozen" in option:
+            num = int(option[-1])
+            if ((num - 1) * 12 + 1) <= result and result <= (num * 12):
+                total_mult += 3
+        elif option == "1to18":
+            if result >= 1 and result <= 18:
+                total_mult += 2
+        elif option == "19to36":
+            if result >= 19 and result <= 36:
+                total_mult += 2
+        elif option == "even":
+            if result % 2 == 0:
+                total_mult += 2
+        elif option == "odd":
+            if result % 2 != 0:
+                total_mult += 2
+        elif option == "red":
+            i = str(result)
+            if all_rows[i] == "red":
+                total_mult += 2
+        else: #black
+            i = str(result)
+            if all_rows[i] == "black":
+                total_mult += 2
+    total_mult -= len(options)
+    return total_mult
 
 #====================================================
 # SLOT MACHINE

@@ -12,7 +12,7 @@
   <form action="/roulette" method="POST">
     <div class="form-group">
       <label for="bet">Please place a bet that is at least $100:</label>
-      <input name="bet" type="number" class="form-control w-25"  min="100" id="bet" value=100>
+      <input name="bet" type="number" class="form-control w-25"  min=100 id="bet" value=100>
     </div><br>
 		<div class="form-check" style="width:85%;" id="options">
 			<h4>Betting Options</h4><br>
@@ -21,8 +21,8 @@
         <div class="col" style="padding:0">
 						<div class="card border-white rounded-0">
 							<div class="card-body" style="margin:0; background-color:{{value}};">
-								<input type="checkbox" name="{{key}}" id="{{key}}">
-								<label class="checklabel" for="{{key}}">{{key}}</label>
+								<input class="form-check-input" type="checkbox" id="{{key}}" name="options" value="single{{key}}">
+								<label class="form-check-label" for="{{key}}">{{key}}</label>
 							</div>
 						</div>
         </div>
@@ -33,8 +33,8 @@
         <div class="col" style="padding:0">
 						<div class="card border-white rounded-0">
 							<div class="card-body" style="margin:0; background-color:{{value}};">
-								<input type="checkbox" name="{{key}}" id="{{key}}">
-								<label class="checklabel" for="{{key}}">{{key}}</label>
+								<input class="form-check-input" type="checkbox"  id="{{key}}" name="options" value="single{{key}}">
+								<label class="form-check-label" for="{{key}}">{{key}}</label>
 							</div>
 						</div>
         </div>
@@ -45,8 +45,8 @@
         <div class="col" style="padding:0">
 						<div class="card border-white rounded-0">
 							<div class="card-body" style="margin:0; background-color:{{value}};">
-								<input type="checkbox" name="{{key}}" id="{{key}}">
-								<label class="checklabel" for="{{key}}">{{key}}</label>
+								<input class="form-check-input" type="checkbox"  id="{{key}}" name="options" value="single{{key}}">
+								<label class="form-check-label" for="{{key}}">{{key}}</label>
 							</div>
 						</div>
         </div>
@@ -56,24 +56,24 @@
 				<div class="col" style="padding:0">
 					<div class="card border-white rounded-0">
 						<div class="card-body" style="margin:0; background-color:#013220">
-							<input type="checkbox" name="1st12" id="1st12">
-							<label class="checklabel" for="1st12"><h4 class="px-4">1st 12</h4></label>
+							<input class="form-check-input" type="checkbox" id="1st12" name="options" value="dozen1">
+							<label class="form-check-label" for="1st12"><h4 class="px-4">1st 12</h4></label>
 						</div>
 					</div>
 				</div>
 				<div class="col" style="padding:0">
 					<div class="card border-white rounded-0">
 						<div class="card-body" style="margin:0; background-color:#013220">
-							<input type="checkbox" name="2nd12" id="2nd12">
-							<label class="checklabel" for="2nd12"><h4 class="px-4">2nd 12</h4></label>
+							<input class="form-check-input" type="checkbox" id="2nd12" name="options" value="dozen2">
+							<label class="form-check-label" for="2nd12"><h4 class="px-4">2nd 12</h4></label>
 						</div>
 					</div>
 				</div>
 				<div class="col" style="padding:0">
 					<div class="card border-white rounded-0">
 						<div class="card-body" style="margin:0; background-color:#013220">
-							<input type="checkbox" name="3rd12" id="3rd12">
-							<label class="checklabel" for="3rd12"><h4 class="px-4">3rd 12</h4></label>
+							<input class="form-check-input" type="checkbox" id="3rd12" name="options" value="dozen3">
+							<label class="form-check-label" for="3rd12"><h4 class="px-4">3rd 12</h4></label>
 						</div>
 					</div>
 				</div>
@@ -82,48 +82,48 @@
 				<div class="col" style="padding:0">
 					<div class="card border-white rounded-0">
 						<div class="card-body" style="margin:0; background-color:#013220">
-							<input type="checkbox" name="1to18" id="1to18">
-							<label class="checklabel" for="1t018"><h6 class="px-2">1 to 18</h6></label>
+							<input class="form-check-input" type="checkbox" id="1to18" name="options" value="1to18">
+							<label class="form-check-label" for="1t018"><h6 class="px-2">1 to 18</h6></label>
 						</div>
 					</div>
 				</div>
 				<div class="col" style="padding:0">
 					<div class="card border-white rounded-0">
 						<div class="card-body" style="margin:0; background-color:#013220">
-							<input type="checkbox" name="even" id="even">
-							<label class="checklabel" for="even"><h6 class="px-2">Even</h6></label>
+							<input class="form-check-input" type="checkbox" id="even" name="options" value="even">
+							<label class="form-check-label" for="even"><h6 class="px-2">Even</h6></label>
 						</div>
 					</div>
 				</div>
 				<div class="col" style="padding:0">
 					<div class="card border-white rounded-0">
 						<div class="card-body" style="margin:0; background-color:red">
-							<input type="checkbox" name="red" id="red">
-							<label class="checklabel" for="red"><h6 class="px-2">Red</h6></label>
+							<input class="form-check-input" type="checkbox" id="red" name="options" value="red">
+							<label class="form-check-label" for="red"><h6 class="px-2">Red</h6></label>
 						</div>
 					</div>
 				</div>
 				<div class="col" style="padding:0">
 					<div class="card border-white rounded-0">
 						<div class="card-body" style="margin:0; background-color:black">
-							<input type="checkbox" name="black" id="black">
-							<label class="checklabel" for="black"><h6 class="px-2">Black</h6></label>
+							<input class="form-check-input" type="checkbox" id="black" name="options" value="black">
+							<label class="form-check-label" for="black"><h6 class="px-2">Black</h6></label>
 						</div>
 					</div>
 				</div>
 				<div class="col" style="padding:0">
 					<div class="card border-white rounded-0">
 						<div class="card-body" style="margin:0; background-color:#013220">
-							<input type="checkbox" name="odd" id="odd">
-							<label class="checklabel" for="odd"><h6 class="px-2">Odd</h6></label>
+							<input class="form-check-input" type="checkbox" id="odd" name="options" value="odd">
+							<label class="form-check-label" for="odd"><h6 class="px-2">Odd</h6></label>
 						</div>
 					</div>
 				</div>
 				<div class="col" style="padding:0">
 					<div class="card border-white rounded-0">
 						<div class="card-body" style="margin:0; background-color:#013220">
-							<input type="checkbox" name="19to36" id="19to36">
-							<label class="checklabel" for="19to36"><h6 class="px-2">19 to 36</h6></label>
+							<input class="form-check-input" type="checkbox" id="19to36" name="options" value="19to36">
+							<label class="form-check-label" for="19to36"><h6 class="px-2">19 to 36</h6></label>
 						</div>
 					</div>
 				</div>
@@ -134,8 +134,8 @@
 				<div class="col-4" style="padding:0">
 					<div class="card border-white rounded-0">
 						<div class="card-body" style="margin:0; background-color:#013220">
-							<input type="checkbox" name="0" id="0">
-							<label class="checklabel" for="0"><h4 class="px-2">0</h4></label>
+							<input class="form-check-input" type="checkbox" id="0" name="options" value="single0">
+							<label class="form-check-label" for="0"><h4 class="px-2">0</h4></label>
 						</div>
 					</div>
 				</div>
@@ -147,7 +147,33 @@
 		<button type="submit" class="btn btn-lg" style="background-color:#f84854">Place Bet</button>
   </form>
   {% else %}
-
+	<div class="card w-50">
+		<div class="card-body rounded" style="background-color:#ddd; color:black;">
+			<h4>Betting Selection</h4>
+			<p><small>Refresh to spin again with the exact same betting selection.</small></p>
+			<b>You bet:</b> ${{ bet }} <br>
+			<b>You selected:</b>
+			{% for option in options %}
+				<br>{{ option }}
+			{% endfor %}
+		</div>
+	</div>
+	<br>
+	<h4>Results: </h4>
+	<form action="/roulette" method="GET">
+	<div class="card w-50">
+		<div class="card-body rounded" style="background-color:#ddd; color:black;">
+			{% if lost %}
+			<span class="text-danger"><b>You lost: </b>${{amount}}</span><br>
+			{% else %}
+			<span style="color:green"><b>You earned: </b>${{amount}}</span><br>
+			{% endif %}
+			<h1 style="color:{{color}}">{{result}}</h1>
+		</div>
+	</div>
+	<br>
+	<button type="submit" class="btn btn-lg" style="background-color:#f84854">Make New Bet</button>
+	</form>
   {% endif %}
 </div>
 {% endblock %}
