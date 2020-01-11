@@ -275,6 +275,14 @@ def prizes():
     session.pop('winnings')
     return render_template("lottery.html")
 
+#====================================================
+# WHEEL
+
+@app.route("/wheel")
+@login_required
+def fortune():
+    return render_template("wheel.html")
+
 
 #====================================================
 # LOGOUT

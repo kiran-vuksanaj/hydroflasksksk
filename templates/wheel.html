@@ -1,0 +1,49 @@
+{% extends "_base.html" %}
+{% block title %}
+ Sractch Ticket
+{% endblock %}
+{% block body %}
+<button id="spin">Try it</button>
+
+<div>
+  <image id="wheel" src="../static/wheel.png">
+</div>
+<script type="text/javascript">
+  let degrees=0;
+  let start=false;
+  function rotations(speed,time) {
+    let past=performance.now(), angle=degrees;
+    console.log("D");
+    function spin(){
+      let now=performance.now();
+      let t=(now-past)/time;
+      console.log("G");
+      if(t>1)t=1;     console.log("H");
+      degrees=angle+(t*speed-0.5*speed*t*t)*100;
+      console.log("I");
+      document.getElementById("wheel").style.transform ="rotate("+degrees+"deg)";
+      console.log("J");
+      if (t < 1) {
+        requestAnimationFrame(spin);
+        console.log(1);
+      }else{
+        running = false;
+        console.log(2);
+      };
+    }console.log("K");
+      requestAnimationFrame(spin);
+      console.log("L");
+      start=true;
+    }
+    document.getElementById("spin").onmousedown = function() {
+        console.log("A");
+        if (!start) {
+            console.log("B");
+            rotations(20, 5000);
+              console.log("M");
+        };
+        start=true;
+    };
+</script>
+
+{% endblock %}
