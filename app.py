@@ -431,7 +431,7 @@ def lotto():
             session['winnings']=int(session['winnings'])+10,000
         if(num[i*3]==num[i*3+1] and num[i*3+1]==num[i*3+2]):
             session['winnings']=int(session['winnings'])+100,000
-    return render_template("lottery.html",xpos=x,ypos=y,numbers=num,index=loop,store="active")
+    return render_template("lottery.html",xpos=x,ypos=y,numbers=num,index=loop,store="active", usermoney = db_manager.getMoney(session['username']))
 
 def prizes():
     if(session['winnings']==0):
