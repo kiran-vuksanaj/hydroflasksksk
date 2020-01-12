@@ -95,6 +95,17 @@ tiffanyC -- 2020-01-09 12:18
 jackieL -- 2020-01-10 00:19
     -changed styling for slot machine
 
+<<<<<<< HEAD
 tiffanyC -- 2020-01-10 12:24
     -added wikipedia descriptions for all games on branch 'wikipedia' using the python wikipedia import
     
+=======
+jackieL -- 2020-01-11 00:33
+    -started working on roulette game
+
+jackieL -- 2020-01-11 14:45
+    -finished roulette html
+
+jackieL -- 2020-01-11 17:27
+    -wrote python functions and finished roulette game, edited html for roulette as well
+>>>>>>> master

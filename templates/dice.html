@@ -34,7 +34,7 @@
   <form action="/dice" method="POST">
     <div class="form-group">
       <label for="bet">Please place a bet that is at least $100:</label>
-      <input name="bet" type="number" class="form-control w-25"  min="10" id="bet" value=100>
+      <input name="bet" type="number" class="form-control w-25"  min="100" id="bet" value=100>
     </div><br>
 		<div class="form-check" style="width:85%;" id="options">
 			<h4>Betting Options</h4>
@@ -318,7 +318,11 @@
 		<form action="/dice" method="GET">
 		<div class="card w-50">
 			<div class="card-body rounded" style="background-color:#ddd; color:black;">
-				<b>You earned: </b>${{amount}}<br>
+				{% if lost %}
+				<span class="text-danger"><b>You lost: </b>${{amount}}</span><br>
+				{% else %}
+				<span style="color:green"><b>You earned: </b>${{amount}}</span><br>
+				{% endif %}
 				<img src="http://roll.diceapi.com/images/poorly-drawn/d6/{{dice[0]}}.png" class="w-25">
 				<img src="http://roll.diceapi.com/images/poorly-drawn/d6/{{dice[1]}}.png" class="w-25">
 				<img src="http://roll.diceapi.com/images/poorly-drawn/d6/{{dice[2]}}.png" class="w-25">
