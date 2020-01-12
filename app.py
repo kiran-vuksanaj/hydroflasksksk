@@ -164,6 +164,8 @@ def games():
         rules['roulette'] = test
         test = wikipedia.page("Chinese poker").content
         rules['poker'] = test[0:391] + " " + test[409:513]
+    else:
+        print(rules)
     return render_template("games.html", games="active", slots = rules['slots'], dice = rules['dice'], texas = rules['texas'], blackjack = rules['blackjack'], roulette = rules['roulette'], poker = rules['poker'])
 
 #====================================================
