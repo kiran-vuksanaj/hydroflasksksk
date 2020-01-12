@@ -152,7 +152,15 @@ def games():
 
 #====================================================
 # WHEEL OF FORTUNE AND LOTTERY TICKETS
-
+@app.route("/wheel")
+@login_required
+def fortune():
+    nums=['1000','3250','1800','1000','1200','3750','-1','1000','3000','1600','1000','3500','1000','2000','1000','2750','0','4000','-1','1000','2500','1400','1000','2250']
+    angle=random.randint(1,360)
+    print(angle)
+    flash('You got'+ nums[(angle//15)], 'alert-success')
+    print(angle//15)
+    return render_template('wheel.html',speed=(1080+angle)/50)
 #====================================================
 # DICE GAME
 

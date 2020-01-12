@@ -42,3 +42,7 @@
   top:200px;
   right:400px;
 }
+#wheel{
+  transform: rotate(7.5deg);
+}
+ 
