@@ -151,7 +151,6 @@ def store():
 def games():
     '''def games(): displays all games in casino'''
     if len(rules) == 0:
-        print("HERE")
         test = wikipedia.page("Slot machine").content
         rules['slots'] = test[0:374] + " " + test[596:705] + " " + test[1084:1182]
         test = wikipedia.page("Sic bo").content
