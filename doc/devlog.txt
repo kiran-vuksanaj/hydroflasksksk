@@ -110,3 +110,4 @@ jackieL -- 2020-01-11 17:27
 tiffanyc -- 2020-01-12 01:33
     -made information popups for dice, roulette, and slot machine games on 'wikipedia' branch
     -merging 'wikipedia' branch to master
+    -made some stylistic fixes to make style consistent across pages
