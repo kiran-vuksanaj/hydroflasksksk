@@ -3,14 +3,19 @@
  Sractch Ticket
 {% endblock %}
 {% block body %}
-<div class="box">
-  <image id="images" src="../static/scratch.jpg">
+
+<h1> Scratch Ticket </h1>
+<h4 class="text-success">Your Money: ${{ usermoney }}</h4><br>
+<div class = "row">
+  <div class="container-fluid" style = "position: relative; right: 750px; height: 650px;">
+    <image class = "img-responsive" id="images" src="../static/scratch.jpg">
     <canvas id="canvas"></canvas>
     {% for i in index %}
     <image class="numbers" style="top:{{ypos[i]}};right:{{xpos[i]}};" src="../static/{{numbers[i]}}">
     {% endfor %}
-</div>
-  <div class="card" id="rules" style="width: 18rem;">
+    <br><br>
+  </div>
+  <div class="card" id="rules" style="width: 18rem; margin-top: 50px;">
     <div class="card-body">
       <h5 class="card-title">Rules to Win!</h5>
       <p class="card-text">In order to win a prize, scratch the card. For each row, if the three numbers form a sequence
@@ -22,6 +27,7 @@
   <div>
     <button id="clear" type="button" name="button" class= "btn btn-primary">Scratch All</button>
   </div>
+</div>
 <script type="text/javascript">
 var url = '../static/lotto.jpg';
 var canvas = document.getElementById('canvas');
