@@ -776,10 +776,10 @@ Slot Machine
     Info
   </button>
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Instructions for Slot Machine</h5>
+          <h5 class="modal-title text-info" id="exampleModalLabel">Instructions for Slot Machine</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -802,7 +802,7 @@ Slot Machine
 <h4 class="text-success">Your Money: ${{ usermoney }}</h4>
 <div class="w-25 p-3">
   <form action = "/slotmachine" method = "GET">
-    <label for="slotbet" class="font-weight-bold text-light"> Make Your Bet: </label>
+    <label for="slotbet">Please place a bet that is at least $100:</label>
     <input name="slotbet" type="number" class="form-control" id="slotbet" value = "{{ primarybet }}"><br>
     <button type="submit" class="btn" style="background-color:#f84854;" data-toggle = "tooltip" data-placement = "right" title = "Press to consecutively place the same bet and spin."> Let's Go! </button>
   </form>

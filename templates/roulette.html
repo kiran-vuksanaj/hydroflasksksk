@@ -5,7 +5,43 @@
 {% endblock %}
 
 {% block body %}
-<h1>Roulette</h1>
+<h1>Roulette
+	<button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style = "margin-left: 10px; background-color:#f84854;">
+		Info
+	</button>
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title text-info" id="exampleModalLabel" style = "font-size: 25px;">Instructions for Roulette</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" style = "font-size: 18px;">
+					<h4 class = "text-success">The Basic Rules of Playing Roulette</h4>
+					Roulette starts with players making bets.
+					The croupier (or dealer) throws a ball into the spinning roulette wheel. Players can still makes bets within the process.
+					While the ball is rolling at the roulette wheel, the croupier/dealer announces: "No more bets."
+					At that point players are not allowed making bets
+					The ball lands on a number in the roulette wheel. If there are winners who bet the number, section or color, they will be rewarded according of their betting odds.
+					<hr>
+					<h4 class = "text-success">Types of Roulette Bets</h4>
+					The players buy in for chips (or bring chips to the table), then place their bets on any number or propositions:<br>
+					<ul>
+					  <li>Inside bets are placed directly on one or more numbers.</li>
+					  <li>Outside bets are placed on certain propositions such as high-low, odd-even, red-black, first, second and third dozen, etc.</li>
+					  <li>There are other combinations of bets that can also be made.</li>
+					</ul>
+					<br><br>
+					<div class = "modal-footer">
+						<h5>For a more comprehensive guide to Roulette and its betting combinations, you can visit <a href = "https://www.888casino.com/blog/roulette-strategy-guide/how-to-play-roulette" target="_blank">this website</a> where these instructions are from.</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</h1>
 <div class="w-100 p-3">
   <h4 class="text-success">Your Money: ${{ money }}</h4>
   {% if betting %}
