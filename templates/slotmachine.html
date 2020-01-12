@@ -779,12 +779,12 @@ Slot Machine
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title text-info" id="exampleModalLabel">Instructions for Slot Machine</h5>
+          <h5 class="modal-title text-info" id="exampleModalLabel" style = "font-size: 25px;">Instructions for Slot Machine</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body" style = "font-size: 25px;">
+        <div class="modal-body" style = "font-size: 22px;">
           Getting three in a row gives you a win!<br><br>
           Lemon: 1x your bet<br>
           Cherry: 2x your bet<br>
@@ -799,14 +799,13 @@ Slot Machine
   </div>
 </h1>
 
+<br>
 <h4 class="text-success">Your Money: ${{ usermoney }}</h4>
-<div class="w-25 p-3">
-  <form action = "/slotmachine" method = "GET">
-    <label for="slotbet">Please place a bet that is at least $100:</label>
-    <input name="slotbet" type="number" class="form-control" id="slotbet" value = "{{ primarybet }}"><br>
-    <button type="submit" class="btn" style="background-color:#f84854;" data-toggle = "tooltip" data-placement = "right" title = "Press to consecutively place the same bet and spin."> Let's Go! </button>
-  </form>
-</div>
+<form action = "/slotmachine" method = "GET">
+  <label for="slotbet">Please place a bet that is at least $100:</label>
+  <input name="slotbet" type="number" class="form-control w-25" id="slotbet" value = "{{ primarybet }}"><br>
+  <button type="submit" class="btn" style="background-color:#f84854;" data-toggle = "tooltip" data-placement = "right" title = "Refresh or press 'Let's Go!' to roll again."> Let's Go! </button>
+</form>
 <br>
 
 
@@ -869,10 +868,16 @@ Slot Machine
 <h4>Results: </h4>
 <div class = "row justify-content-center">
   <div class = "card" style = "width: 30rem; height: 8rem; background-color: #ddd; color:black; position: relative;">
-    <div class = "card-body">
-      <p><small>Refresh or press 'Let's Go!' to roll again.</small></p>
+    <div class = "card-body rounded">
       <b>You bet:</b> ${{ bet }} <br>
-      <b>You earned: </b>${{ money }}<br>
+      {% if bet == 0 %}
+        <b>You earned: </b>${{ money }}<br><br>
+      {% elif money == 0 %}
+        <span class = "text-danger"><b>You earned: </b>${{ money }}</span><br><br>
+      {% else %}
+        <span style = "color: green;"<b>You earned: </b>${{ money }}</span><br><br>
+      {% endif %}
+      <p><small>Refresh or press 'Let's Go!' to roll again.</small></p>
     </div>
   </div>
 </div>
