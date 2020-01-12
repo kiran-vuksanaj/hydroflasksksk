@@ -5,7 +5,37 @@
 {% endblock %}
 
 {% block body %}
-<h1>Dice</h1>
+<h1>Dice
+	<button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style = "margin-left: 10px; background-color:#f84854;">
+		Info
+	</button>
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title text-info" id="exampleModalLabel" style = "font-size: 25px;">Instructions for Dice or "Sic Bo"</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" style = "font-size: 18px;">
+					<h4 class = "text-success">The Basic Rules of Dice or "Sic Bo"</h4>
+					Sic Bo is a game that requires no skill and relies primarily on chance, though there are said to be many strategies and techniques for winning the game.
+					<br><br>The objective of the dice game is to bet on the outcome of the roll of three die. Players choose their chip size (the larger the chip, the bigger the bet)
+					and place the chips on the areas of the Sic Bo table corresponding to the bet(s) they want to make. Multiple bets can be made on one roll of die. If you win,
+					the payout prize corresponds with the rarity of the die outcome and the amount wagered.
+					<br><br>
+					In the case of The Black Diamond Casino online game of Sic Bo, players only need to enter a bet and select the boxes of the betting options they want to make, before clicking "Roll Dice."
+					<br><br>
+					<div class = "modal-footer">
+						<h5>For a more comprehensive guide to Sic Bo and its betting combinations, you can visit <a href = "https://www.playsmart.ca/table-games/sic-bo/how-to-play/" target="_blank">this website</a>.</h5>
+					</div>
+					<br>
+				</div>
+			</div>
+		</div>
+	</div>
+</h1>
 <div class="w-100 p-3">
 	<h4 class="text-success">Your Money: ${{ money }}</h4>
 	{% if betting %}
@@ -15,7 +45,7 @@
       <input name="bet" type="number" class="form-control w-25"  min="100" id="bet" value=100>
     </div><br>
 		<div class="form-check" style="width:85%;" id="options">
-			<h4>Betting Options</h4>
+			<h4>Betting Options</h4><br>
 			<div class="row">
 				<div class="col">
 					<input class="form-check-input" type="checkbox" value="small" name="options">
