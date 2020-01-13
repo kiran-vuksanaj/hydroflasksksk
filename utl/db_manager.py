@@ -66,13 +66,23 @@ def updateMoney(username, amount):
 #====================================================
 # LOTTERY TABLE FUNCTIONS
 
+def getType(id):
+    '''def getType(id): get type of a lottery ticket based on its id'''
+    if "A" in id:
+        return "A"
+    elif "B" in id:
+        return "B"
+    return "C"
+
 def checkPrice(username, type):
     '''def checkPrice(username, type): check if user can afford lottery ticket'''
     money = getMoney(username)
     price = 0
-    if type == "A": #dummy values
+    if type == "A":
         price = 1000
     if type == "B":
+        price = 10000
+    else:
         price = 10000
     return money >= price
 
@@ -84,14 +94,20 @@ def generateNum():
         num.append(rand)
     return num
 
-def calculatePrize(num):
+def calculatePrize(type, num):
     '''def calculatePrize(id): calculate winnings for given lottery ticket numbers'''
     winnings = 0
-    for i in range(4):
-        if(num[i*3]<num[i*3+1] and num[i*3+1]<num[i*3+2]):
-            winnings += 10000
-        if(num[i*3]==num[i*3+1] and num[i*3+1]==num[i*3+2]):
-            winnings += 100000
+    if type == "A":
+        for i in range(4):
+            if(num[i*3]<num[i*3+1] and num[i*3+1]<num[i*3+2]):
+                winnings = 10000
+    elif type == "B":
+        for i in range(4):
+            if(num[i*3]==num[i*3+1] and num[i*3+1]==num[i*3+2]):
+                winnings = 100000
+    else: #type C
+        #rule
+        winnings += 0
     return winnings
 
 def purchaseTicket(username, type):
@@ -114,14 +130,16 @@ def purchaseTicket(username, type):
                 strnum += str(num[i])
             else:
                 strnum += str(num[i]) + ","
-        winnings = calculatePrize(num)
+        winnings = calculatePrize(type, num)
         inputs = (id, username, strnum, winnings, 0)
         execmany(q, inputs)
 
         #update user table money
         if type == "A": #dummy values
             price = -1000
-        if type == "B":
+        elif type == "B":
+            price = -10000
+        else:
             price = -10000
         updateMoney(username, price)
         return id
@@ -172,7 +190,13 @@ def getTickets(username):
     q = "SELECT id FROM lottery_tbl WHERE owner=? AND claimed=0"
     inputs = (username, )
     data = execmany(q, inputs).fetchall()
-    tickets = []
+    tickets = {"A": [], "B": [], "C": []}
     for entry in data:
-        tickets.append(entry[0])
+        entry = entry[0]
+        if "A" in entry:
+            tickets["A"].append(entry)
+        elif "B" in entry:
+            tickets["B"].append(entry)
+        else:
+            tickets["C"].append(entry)
     return tickets

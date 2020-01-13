@@ -35,8 +35,11 @@
 {% if notickets %}
 	<a href="/store" class="text-info">You have no tickets left. Head over to the store to buy more!</a>
 {% else %}
-	{% for ticket in tickets %}
-		<a href="/lottery?id={{ticket}}" class="text-info">{{ ticket }}</a>
+	{% for key, value in tickets %}
+		<h1>{{ key }}</h1>
+		{% for ticket in value %}
+		<a href="/lottery?id={{ticket}}" class="text-info">{{ ticket }}</a><br>
+		{% endfor %}
 		<br>
 	{% endfor %}
 {% endif %}

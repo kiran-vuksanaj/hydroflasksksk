@@ -118,11 +118,13 @@ def profile():
     '''def profile(): allows user to update their profile and view their purchases'''
     user = session['username']
     tickets = db_manager.getTickets(user)
+    print("TICKET LIST")
+    print(tickets)
     notickets = True
-    if len(tickets) > 0:
+    if len(tickets["A"]) + len(tickets["B"]) + len(tickets["C"]) > 0:
         notickets = False
     money = db_manager.getMoney(user)
-    return render_template("profile.html", user=user, money=money, notickets=notickets, tickets=tickets, profile="active")
+    return render_template("profile.html", user=user, money=money, notickets=notickets, tickets=tickets.items(), profile="active")
 
 @app.route("/resetpasswd", methods=["POST"])
 @login_required
@@ -448,7 +450,8 @@ def lotto():
                         num[i]="nine.png"
                     if(num[i]==0):
                         num[i]="zero.png"
-                return render_template("lottery.html",xpos=x,ypos=y,id=id,numbers=num,index=loop,usermoney=db_manager.getMoney(username),store="active")
+                type = db_manager.getType(id)
+                return render_template("lottery.html",xpos=x,ypos=y,id=id,type=type,numbers=num,index=loop,usermoney=db_manager.getMoney(username),store="active")
             else: #invalid id
                 flash("Invalid ID for lottery ticket. You have been redirected to the store.", 'alert-danger')
                 return redirect(url_for('store'))
