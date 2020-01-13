@@ -513,7 +513,7 @@ def blackjack():
         while dealer_total < 17:
             game['dealer_cards'] += carddeck.drawcards(game['deck'],1)
             print('card drawn for dealer: ',game['dealer_cards'][-1]['code'])
-            delaer_total = blackjack_cardtotal( game['dealer_cards'] )
+            dealer_total = blackjack_cardtotal( game['dealer_cards'] )
         if dealer_total > 21:
             flash('Dealer Bust! You Win!','alert-success')
             db_manager.updateMoney( session['username'], 2*game['bet'] )
