@@ -86,12 +86,12 @@ def generateNum():
 
 def calculatePrize(num):
     '''def calculatePrize(id): calculate winnings for given lottery ticket numbers'''
-    for i in range(3):
-        winnings = 0
+    winnings = 0
+    for i in range(4):
         if(num[i*3]<num[i*3+1] and num[i*3+1]<num[i*3+2]):
-            winnings = 10000
+            winnings += 10000
         if(num[i*3]==num[i*3+1] and num[i*3+1]==num[i*3+2]):
-            winnings = 100000
+            winnings += 100000
     return winnings
 
 def purchaseTicket(username, type):
@@ -144,7 +144,6 @@ def getNum(id):
     num = []
     for entry in data:
         num.append(int(entry))
-    print(num)
     return num
 
 def getClaimed(id):

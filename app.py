@@ -489,7 +489,7 @@ def lotto():
             if(winnings == 0):
                 flash("No winnings. Better luck next time!",'alert-danger')
             else:
-                flash("Congratulations! You have claimed $" + winnings + "!", 'alert-success')
+                flash("Congratulations! You have claimed $" + str(winnings) + "!", 'alert-success')
             return render_template("lottery.html",xpos=x,ypos=y,numbers=num,index=loop,prizes=True,usermoney=db_manager.getMoney(session['username']),store="active")
 #====================================================
 # BLACKJACK
