@@ -1,6 +1,9 @@
 import sqlite3
 from utl.db_builder import exec, execmany
+import sys
+import random
 
+limit = sys.maxsize
 #====================================================
 # SIGN UP AND LOGIN FUNCTIONS
 
@@ -61,3 +64,53 @@ def updateMoney(username, amount):
     execmany(q, inputs)
 
 #====================================================
+# LOTTERY TABLE FUNCTIONS
+
+
+def checkPrice(username, type):
+    '''def checkPrice(username, type): check if user can afford lottery ticket'''
+    money = getMoney(username)
+    price = 0
+    if type == "A": #dummy values
+        price = 1000
+    if type == "B":
+        price = 10000
+    return money >= price
+
+def generateNum():
+    num = []
+    while len(num)<13:
+        rand = random.randint(0, 9)
+        num.append(rand)
+    return num
+
+def purchaseTicket(username, num, type):
+    '''def purchaseTicket(username, type): purchase ticket of given type under given username'''
+    if checkPrice(username, type): #if user can afford ticket
+        #add to table
+        id = random.randrange(limit)
+        q = "SELECT id FROM lottery_tbl WHERE id=?"
+        inputs = (id, )
+        data = execmany(q, inputs).fetchone()
+        while data is not None:
+            id = random.randrange(limit)
+            data = execmany(q, inputs).fetchone()
+        q = "INSERT INTO lottery_tbl VALUES(?, ?, ?, ?)"
+        id = type + str(id)
+        strnum = ""
+        for i in range(len(num)):
+            if i == 11: #last number
+                strnum += str(num[i])
+            else:
+                strnum += str(num[i]) + ","
+        inputs = (id, username, strnum, 0)
+        execmany(q, inputs)
+
+        #update user table money
+        if type == "A": #dummy values
+            price = -1000
+        if type == "B":
+            price = -10000
+        updateMoney(username, price)
+        return True
+    return False
