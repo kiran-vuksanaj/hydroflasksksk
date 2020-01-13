@@ -64,6 +64,9 @@ kiranV -- 2020-01-07 20:19
 jackieL -- 2020-01-07 20:28
     -edited formatting for games html page
 
+kiranV -- 2020-01-08 08:40
+    -wrote most of the logic for playing blackjack, function calls to get data from deck of cards API
+
 jackieL -- 2020-01-08 20:45
     -started working on dice game (html, python)
 
@@ -83,6 +86,8 @@ amandaZ -- 2020-01-08 21:58
 
 kiranV -- 2020-01-09 08:37
     -updated README.md to match requirements as indicated by final deliverables (Task the F-I-F)
+    -began writing the template and the game ending logic for blackjack, encountering several bugs and will handle them soon
+
 
 jackieL -- 2020-01-09 08:42
     -added the foundation of the dice game with most betting options
@@ -122,6 +127,10 @@ jackieL -- 2020-01-12 23:13
 
 jackieL -- 2020-01-13 00:55
     -finished lottery game by adding code to claim prizes
+
+kiranV -- 2020-01-13 08:25
+    -fixed the bugs i was encountering earlier with blackjack, game should be working in completion now
+    -merged blackjack into master
 
 tiffanyC -- 2020-01-13 08:30
       -changed styling of roulette, slots, and dice game pages to match styling on the all games page
