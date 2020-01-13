@@ -15,7 +15,7 @@ class RequestException(Exception):
 def http_getJSON( url, method = 'GET', args = {} ):
     ''' http_getJSON(): use urllib3 to issue a request to a given url and convert its response from JSON into a dictionary '''
     http = urllib3.PoolManager()
-    response = http.request(method,url)
+    response = http.request(method,url,args)
     return json.loads(response.data.decode('utf-8'))
 
 #====================================================
@@ -30,7 +30,7 @@ def newdeck( args = {} ):
     data = http_getJSON(NEWDECK,args = args)
     if data and data['success']:
         return data['deck_id']
-
+    
     print(data)
     raise RequestException("Deck of Cards newdeck: see console")
 
@@ -42,6 +42,7 @@ def drawcards(deck_id,n):
         args = {'count':n}
     )
     if data and data['success']:
+        print(data['cards'])
         return data['cards']
 
     print(data)
