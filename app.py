@@ -253,7 +253,7 @@ def blackjack_cardtotal(cards):
         aces -= 1
     return total
 
-@app.route("/blackjack")
+@app.route("/blackjack",methods=['GET','POST'])
 @login_required
 def blackjack():
     ''' def blackjack(): route for blackjack game '''
@@ -269,6 +269,7 @@ def blackjack():
         game['dealer_cards'] = carddeck.drawcards(game['deck'],2)
         game['player_cards'] = carddeck.drawcards(game['deck'],2)
         db_manager.updateMoney( session['username'], -game['bet'] )
+        print(game['dealer_cards'])
         # TODO: initial blackjack
         mode = 'play'
     elif 'hit' in request.form:
