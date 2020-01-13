@@ -121,4 +121,8 @@ jackieL -- 2020-01-12 23:13
     -updated design doc (removed Chinese poker, added new data table, edited component map)
 
 jackieL -- 2020-01-13 00:55
-    -finished lottery game by adding code to claim prizes 
+    -finished lottery game by adding code to claim prizes
+
+tiffanyC -- 2020-01-13 08:30
+      -changed styling of roulette, slots, and dice game pages to match styling on the all games page
+      -Jackie changed styling of games page
