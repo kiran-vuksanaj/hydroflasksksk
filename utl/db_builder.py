@@ -32,5 +32,5 @@ def build_db():
     command = "CREATE TABLE IF NOT EXISTS texas_tbl (game_id TEXT, player TEXT, card1 TEXT, card2 TEXT, card3 TEXT, card4 TEXT, card5 TEXT, bet INT, folded INT)"
     exec(command)
 
-    command = "CREATE TABLE IF NOT EXISTS lottery_tbl (id TEXT, owner TEXT, numbers TEXT, claimed INT)"
+    command = "CREATE TABLE IF NOT EXISTS lottery_tbl (id TEXT, owner TEXT, numbers TEXT, winnings INT, claimed INT)"
     exec(command)

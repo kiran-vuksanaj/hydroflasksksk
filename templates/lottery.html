@@ -23,7 +23,7 @@
       <p class="card-text">In order to win a prize, scratch the card. For each row, if the three numbers form a sequence
       (from left to right) that is a strictly increasing (1,1,2 for example doesn't count) sequence, you will win $10,000.
       If any row has three of the same numbers, you will get $100,000. Get Scratching!</p>
-      <form action="/lottery" method="POST">
+      <form action="/lottery?id={{id}}" method="POST">
         <button id="claim" type="submit" class="btn" style="background-color:#f84854; display:none">Claim Prize!</button>
       </form>
     </div>

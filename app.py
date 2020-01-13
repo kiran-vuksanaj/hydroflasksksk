@@ -117,7 +117,12 @@ def home():
 def profile():
     '''def profile(): allows user to update their profile and view their purchases'''
     user = session['username']
-    return render_template("profile.html", user=user, profile="active")
+    tickets = db_manager.getTickets(user)
+    notickets = True
+    if len(tickets) > 0:
+        notickets = False
+    money = db_manager.getMoney(user)
+    return render_template("profile.html", user=user, money=money, notickets=notickets, tickets=tickets, profile="active")
 
 @app.route("/resetpasswd", methods=["POST"])
 @login_required
@@ -145,6 +150,19 @@ def password():
 def store():
     '''def store(): display buying options for user'''
     return render_template("store.html", store="active")
+
+@app.route("/purchase", methods=["POST"])
+@login_required
+def purchase():
+    '''def purchase(): process user's purchase request for lottery tickets'''
+    username = session['username']
+    type = request.form['type']
+    purchased = db_manager.purchaseTicket(username, type)
+    if (purchased):
+        flash('Purchase successfully made!','alert-success')
+    else:
+        flash('You don\'t have enough money to make this purchase!', 'alert-danger')
+    return redirect(url_for("store"))
 
 @app.route("/games")
 @login_required
@@ -400,58 +418,79 @@ def lotto():
     x=["307px","201px","95px","307px","201px","95px","307px","201px","95px","307px","201px","95px"]
     y=["270px","270px","270px", "340px", "340px","340px","415px","415px","415px","485px","485px","485px"]
     loop=[0,1,2,3,4,5,6,7,8,9,10,11]
-    if request.method == 'GET':
-        session['winnings'] = 0
-        if 'numbers' not in session:
-            num = db_manager.generateNum()
-            session['numbers'] = num
-            purchased = db_manager.purchaseTicket(username, num, "A")
-            if not purchased:
-                flash("You don't have enough money to buy this ticket!", 'alert-danger')
+    if request.method == 'GET': #scratch the ticket
+        if request.args.get("id"):
+            id = request.args.get("id")
+            valid = db_manager.checkId(id)
+            if valid:
+                claimed = db_manager.getClaimed(id) #check if ticket has been claimed already
+                if claimed:
+                    flash("This ticket has been redeemed already. You have been redirected to the store.", 'alert-primary')
+                    return redirect(url_for("store"))
+                num = db_manager.getNum(id)
+                for i in range(len(num)):
+                    if(num[i]==1):
+                        num[i]="one.png"
+                    if(num[i]==2):
+                        num[i]="two.png"
+                    if(num[i]==3):
+                        num[i]="three.png"
+                    if(num[i]==4):
+                        num[i]="four.png"
+                    if(num[i]==5):
+                        num[i]="five.png"
+                    if(num[i]==6):
+                        num[i]="six.png"
+                    if(num[i]==7):
+                        num[i]="seven.png"
+                    if(num[i]==8):
+                        num[i]="eight.png"
+                    if(num[i]==9):
+                        num[i]="nine.png"
+                    if(num[i]==0):
+                        num[i]="zero.png"
+                return render_template("lottery.html",xpos=x,ypos=y,id=id,numbers=num,index=loop,usermoney=db_manager.getMoney(username),store="active")
+            else: #invalid id
+                flash("Invalid ID for lottery ticket. You have been redirected to the store.", 'alert-danger')
                 return redirect(url_for('store'))
-        else:
-            num = session['numbers']
-        for i in range(len(num)):
-            if(num[i]==1):
-                num[i]="one.png"
-            if(num[i]==2):
-                num[i]="two.png"
-            if(num[i]==3):
-                num[i]="three.png"
-            if(num[i]==4):
-                num[i]="four.png"
-            if(num[i]==5):
-                num[i]="five.png"
-            if(num[i]==6):
-                num[i]="six.png"
-            if(num[i]==7):
-                num[i]="seven.png"
-            if(num[i]==8):
-                num[i]="eight.png"
-            if(num[i]==9):
-                num[i]="nine.png"
-            if(num[i]==0):
-                num[i]="zero.png"
-        for i in range(3):
-            if(num[i*3]<num[i*3+1] and num[i*3+1]<num[i*3+2]):
-                session['winnings'] += 10000
-            if(num[i*3]==num[i*3+1] and num[i*3+1]==num[i*3+2]):
-                session['winnings'] += 100000
-        return render_template("lottery.html",xpos=x,ypos=y,numbers=num,index=loop,store="active", usermoney = db_manager.getMoney(username))
+        else: #no id
+            flash("No ID was provided for lottery ticket. You have been redirected to the store.", 'alert-danger')
+            return redirect(url_for('store'))
     else: #claim prizes
-        if 'numbers' not in session:
+        id = request.args.get('id')
+        claimed = db_manager.getClaimed(id) #check if ticket has been claimed already
+        if claimed:
             flash("Your prize has been claimed already. You have been redirected to the store.", 'alert-primary')
             return redirect(url_for("store"))
         else:
-            if(session['winnings'] == 0):
+            num = db_manager.getNum(id)
+            for i in range(len(num)):
+                if(num[i]==1):
+                    num[i]="one.png"
+                if(num[i]==2):
+                    num[i]="two.png"
+                if(num[i]==3):
+                    num[i]="three.png"
+                if(num[i]==4):
+                    num[i]="four.png"
+                if(num[i]==5):
+                    num[i]="five.png"
+                if(num[i]==6):
+                    num[i]="six.png"
+                if(num[i]==7):
+                    num[i]="seven.png"
+                if(num[i]==8):
+                    num[i]="eight.png"
+                if(num[i]==9):
+                    num[i]="nine.png"
+                if(num[i]==0):
+                    num[i]="zero.png"
+            winnings = db_manager.claimPrize(username, id)
+            if(winnings == 0):
                 flash("No winnings. Better luck next time!",'alert-danger')
             else:
-                flash("Congratulations! You have claimed $" + str(session['winnings']) + "!", 'alert-success')
-            db_manager.updateMoney(session['username'],int(session['winnings']))
-            session['winnings'] = 0
-            numbers = session['numbers']
-            session.pop('numbers')
-            return render_template("lottery.html",xpos=x,ypos=y,numbers=numbers,index=loop,prizes=True,usermoney=db_manager.getMoney(session['username']),store="active")
+                flash("Congratulations! You have claimed $" + winnings + "!", 'alert-success')
+            return render_template("lottery.html",xpos=x,ypos=y,numbers=num,index=loop,prizes=True,usermoney=db_manager.getMoney(session['username']),store="active")
 
 #====================================================
 # LOGOUT
