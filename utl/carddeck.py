@@ -30,7 +30,6 @@ def newdeck( args = {} ):
     data = http_getJSON(NEWDECK,args = args)
     if data and data['success']:
         return data['deck_id']
-    
     print(data)
     raise RequestException("Deck of Cards newdeck: see console")
 
@@ -42,7 +41,6 @@ def drawcards(deck_id,n):
         args = {'count':n}
     )
     if data and data['success']:
-        print(data['cards'])
         return data['cards']
 
     print(data)
