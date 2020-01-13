@@ -116,3 +116,6 @@ tiffanyC -- 2020-01-12 17:36
     -added user money to Amanda's scratch ticket
     -did some styling to the scratch ticket html but had a hard time centering objects and putting them in relative, responsive positions
     -made information text on games.html into popup boxes to reduce the ugliness of too much text on the page
+
+jackieL -- 2020-01-12 23:13
+    -updated design doc (removed Chinese poker, added new data table, edited component map)
