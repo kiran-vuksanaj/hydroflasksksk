@@ -1,7 +1,7 @@
 from flask import Flask , render_template,request, redirect, url_for, session, flash
 from functools import wraps
 import sqlite3, os, random
-from utl import db_builder, db_manager
+from utl import db_builder, db_manager,carddeck
 import urllib3, json, urllib
 import random
 import wikipedia
@@ -491,6 +491,87 @@ def lotto():
             else:
                 flash("Congratulations! You have claimed $" + winnings + "!", 'alert-success')
             return render_template("lottery.html",xpos=x,ypos=y,numbers=num,index=loop,prizes=True,usermoney=db_manager.getMoney(session['username']),store="active")
+#====================================================
+# BLACKJACK
+
+def blackjack_cardtotal(cards):
+    '''def cardtotal(cards): calculate blackjack value of list of cards '''
+    total = 0
+    aces = 0
+    for card in cards:
+        if card['value'] == 'ACE':
+            aces += 1
+            total += 11
+        else:
+            try:
+                value = int(card['value'])
+            except ValueError:
+                # value for all face cards is 10
+                value = 10
+            total += value
+    while total > 21 and aces > 0:
+        total -= 10
+        aces -= 1
+    return total
+
+@app.route("/blackjack",methods=['GET','POST'])
+@login_required
+def blackjack():
+    ''' def blackjack(): route for blackjack game '''
+    if   request.method == 'GET':
+        # initial entry into a game, show the bet decision page
+        mode = 'bet'
+        game = {}
+    elif 'bet' in request.form:
+        # user just made a bet, initialize a new game and deduct bet
+        game = {}
+        game['bet'] = int(request.form['bet'])
+        game['deck'] = carddeck.newdeck()
+        game['dealer_cards'] = carddeck.drawcards(game['deck'],2)
+        game['player_cards'] = carddeck.drawcards(game['deck'],2)
+        db_manager.updateMoney( session['username'], -game['bet'] )
+        print(game['dealer_cards'])
+        # TODO: initial blackjack
+        mode = 'play'
+    elif 'hit' in request.form:
+        # user just clicked the "hit" button, give them another card and, if necessary, finish game
+        game = session['blackjack']
+        newcard = carddeck.drawcards(game['deck'],1)
+        game['player_cards'] += newcard
+        if blackjack_cardtotal(game['player_cards']) > 21:
+            flash('Bust','alert-danger')
+            mode = 'end'
+        else:
+            mode = 'play'
+    elif 'stand' in request.form:
+        # user just clicked the "stand" button, finish game
+        game = session['blackjack']
+        # play dealer's part
+        player_total = blackjack_cardtotal(game['player_cards'])
+        dealer_total = blackjack_cardtotal(game['dealer_cards'])
+        while dealer_total < 17:
+            game['dealer_cards'] += carddeck.drawcards(game['deck'],1)
+            print('card drawn for dealer: ',game['dealer_cards'][-1]['code'])
+            dealer_total = blackjack_cardtotal( game['dealer_cards'] )
+        if dealer_total > 21:
+            flash('Dealer Bust! You Win!','alert-success')
+            db_manager.updateMoney( session['username'], 2*game['bet'] )
+        elif player_total > dealer_total:
+            flash('You Win!','alert-success')
+            db_manager.updateMoney( session['username'], 2*game['bet'] )
+        elif player_total == dealer_total:
+            flash('Push (tie)','alert-info')
+            db_manager.updateMoney( session['username'], game['bet'] )
+        else:
+            flash('You lose.','alert-danger')
+        mode = 'end'
+
+    if mode == 'end':
+        del session['blackjack']
+    else:
+        session['blackjack'] = game
+
+    return render_template("blackjack.html",mode=mode,game=game)
 
 #====================================================
 # LOGOUT
