@@ -802,7 +802,7 @@ Slot Machine
 <br>
 <h4 class="text-success">Your Money: ${{ usermoney }}</h4>
 <form action = "/slotmachine" method = "GET">
-  <label for="slotbet">Please place a bet that is at least $100:</label>
+  <label for="slotbet">Please place a bet (integer) that is at least $100:</label>
   <input name="slotbet" type="number" class="form-control w-25" id="slotbet" value = "{{ primarybet }}"><br>
   <button type="submit" class="btn" style="background-color:#f84854;" data-toggle = "tooltip" data-placement = "right" title = "Refresh or press 'Let's Go!' to roll again."> Let's Go! </button>
 </form>

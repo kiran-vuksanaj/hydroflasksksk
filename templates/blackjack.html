@@ -12,16 +12,16 @@ Blackjack
 <!-- display form to place a bet -->
 <form action="/blackjack" method="POST">
   <div class="form-group w-25">
-    <label for="bet">Please place a bet from $100 to $1000:</label>
+    <label for="bet">Please place a bet (integer) that is at least $100:</label>
     <input
       name="bet" id="bet"
       type="number"
       class="form-control"
-      value="100" min="100" max="1000"
+      value="100" min="100"
       />
   </div>
   <br />
-  <button type="submit" class="btn btn-primary">Start Game</button>
+  <button type="submit" class="btn" style="background-color:#f84854">Start Game</button>
 </form>
 
 {% endif %}
@@ -29,7 +29,7 @@ Blackjack
 {% if mode=="play" %}
 <!-- display ongoing game, hiding hole card, showing all others -->
 <h6>Dealer's Cards</h6>
-<img src="/static/cardback.jpg" height="314px" width="226px" />
+<img src="/static/cardback.jpg" height="314px" width="226px"/>
 <img src={{game.dealer_cards[1].image}} />
 <br><br><br>
 <h6>Your Cards</h6>

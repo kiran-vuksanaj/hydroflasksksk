@@ -198,7 +198,7 @@ def dice():
         money = db_manager.getMoney(user)
         return render_template("dice.html", betting=True, money=money, games="active")
     else:
-        bet = int(request.form['bet'])
+        bet = int(float(request.form['bet']))
         options = request.form.getlist('options')
         if len(options) == 0 or not db_manager.checkBet(user, bet):
             flash("Please enter a valid bet and choose at least one betting option!", 'alert-danger')
@@ -276,7 +276,7 @@ def roulette():
         money = db_manager.getMoney(user)
         return render_template("roulette.html", betting=True, money=money, games="active", one=row_one.items(), two=row_two.items(), three=row_three.items())
     else:
-        bet = int(request.form['bet'])
+        bet = int(float(request.form['bet']))
         options = request.form.getlist('options')
         if len(options) == 0 or not db_manager.checkBet(user, bet):
             flash("Please enter a valid bet and choose at least one betting option!", 'alert-danger')
@@ -338,13 +338,12 @@ def slot():
     username = session['username']
     if request.args.get('slotbet'):
         bet = request.args.get('slotbet')
-        # print(bet)
-        if bet == "" or int(bet) < 100 or int(bet) > db_manager.getMoney(username):
+        if bet == "" or float(bet) < 100 or float(bet) > db_manager.getMoney(username):
             bet = 100
             flash("Please place a valid bet.", 'alert-danger')
             return render_template("slotmachine.html", primarybet = bet, bet = 0, image1 = dict[random.choice(slotImages)], image2 = dict[random.choice(slotImages)], image3 = dict[random.choice(slotImages)], usermoney = db_manager.getMoney(username), money = 0, colour = "#FFD700", games="active", check = "false")
         else:
-            bet = int(bet)
+            bet = int(float(bet))
             db_manager.updateMoney(session['username'], -bet)
             rand1 = random.choice(slotImages)
             rand2 = random.choice(slotImages)
@@ -525,7 +524,7 @@ def blackjack():
     elif 'bet' in request.form:
         # user just made a bet, initialize a new game and deduct bet
         game = {}
-        game['bet'] = int(request.form['bet'])
+        game['bet'] = int(float(request.form['bet']))
         game['deck'] = carddeck.newdeck()
         game['dealer_cards'] = carddeck.drawcards(game['deck'],2)
         game['player_cards'] = carddeck.drawcards(game['deck'],2)
@@ -571,7 +570,7 @@ def blackjack():
     else:
         session['blackjack'] = game
 
-    return render_template("blackjack.html",mode=mode,game=game)
+    return render_template("blackjack.html",mode=mode,game=game,games="active")
 
 #====================================================
 # LOGOUT
