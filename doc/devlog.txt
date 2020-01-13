@@ -138,3 +138,6 @@ tiffanyC -- 2020-01-13 08:30
 
 jackieL -- 2020-01-13 11:54
     -wrote database functions to connect frontend lottery framework to backend, thus allowing users to purchase and redeem lottery tickets, edited html to reflect purchases from store
+
+jackieL -- 2020-01-13 14:42
+    -added different types of lottery tickets to store, wrote database functions to handle each 
