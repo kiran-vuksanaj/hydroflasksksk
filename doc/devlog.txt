@@ -63,3 +63,13 @@ kiranV -- 2020-01-07 20:19
 
 jackieL -- 2020-01-07 20:28
     -edited formatting for games html page
+
+kiranV -- 2020-01-08 08:40
+    -wrote most of the logic for playing blackjack, function calls to get data from deck of cards API
+
+kiranV -- 2020-01-09 08:40
+    -began writing the template and the game ending logic for blackjack, encountering several bugs and will handle them soon
+
+kiranV -- 2020-01-13 08:25
+    -fixed the bugs i was encountering earlier with blackjack, game should be working in completion now
+    -merged blackjack into master
