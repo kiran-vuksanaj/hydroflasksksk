@@ -37,19 +37,19 @@ def no_login_required(f):
     return dec
 
 rules = {}
- if len(rules) == 0:
-     test = wikipedia.page("Slot machine").content
-     rules['slots'] = test[0:374] + " " + test[596:705] + " " + test[1084:1182]
-     test = wikipedia.page("Sic bo").content
-     rules['dice'] = test[0:324] + " " + test[677:814] + " " + test[832:1071]
-     test = wikipedia.summary("Texas hold'em")
-     rules['texas'] = test[0:869]
-     test = wikipedia.summary("Blackjack")
-     rules['blackjack'] = test[0:861]
-     test = wikipedia.summary("Roulette")
-     rules['roulette'] = test
-     test = wikipedia.page("Chinese poker").content
-     rules['poker'] = test[0:391] + " " + test[409:513]
+if len(rules) == 0:
+    test = wikipedia.page("Slot machine").content
+    rules['slots'] = test[0:374] + " " + test[596:705] + " " + test[1084:1182]
+    test = wikipedia.page("Sic bo").content
+    rules['dice'] = test[0:324] + " " + test[677:814] + " " + test[832:1071]
+    test = wikipedia.summary("Texas hold'em")
+    rules['texas'] = test[0:869]
+    test = wikipedia.summary("Blackjack")
+    rules['blackjack'] = test[0:861]
+    test = wikipedia.summary("Roulette")
+    rules['roulette'] = test
+    test = wikipedia.page("Chinese poker").content
+    rules['poker'] = test[0:391] + " " + test[409:513]
 
 #====================================================
 # LOGIN AND SIGNUP PAGES
