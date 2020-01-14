@@ -144,3 +144,6 @@ jackieL -- 2020-01-13 14:42
 
 jackieL -- 2020-01-14 14:59
     -fixed urllib api request error with card games
+
+jackieL -- 2020-01-14 15:29
+    -finished store functionality and updated database functions to accomodate three types of lottery tickets

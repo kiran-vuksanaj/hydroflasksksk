@@ -79,11 +79,11 @@ def checkPrice(username, type):
     money = getMoney(username)
     price = 0
     if type == "A":
-        price = 1000
+        price = 2000
     if type == "B":
         price = 10000
     else:
-        price = 10000
+        price = 1000
     return money >= price
 
 def generateNum():
@@ -106,8 +106,9 @@ def calculatePrize(type, num):
             if(num[i*3]==num[i*3+1] and num[i*3+1]==num[i*3+2]):
                 winnings = 100000
     else: #type C
-        #rule
-        winnings += 0
+        for i in range(4):
+            if ((num[i*3] + num [i*3+1] + num[i*3+2]) % 3 == 0):
+                winnings = 2500
     return winnings
 
 def purchaseTicket(username, type):
@@ -136,11 +137,11 @@ def purchaseTicket(username, type):
 
         #update user table money
         if type == "A": #dummy values
-            price = -1000
+            price = -2000
         elif type == "B":
             price = -10000
         else:
-            price = -10000
+            price = -1000
         updateMoney(username, price)
         return id
     return -1
