@@ -16,9 +16,23 @@
 <div class="row w-75">
 	<div class="col">
 		<div class="card" style="width: 15rem;">
-			<img class="card-img-top" src="..." alt="Card image cap">
+			<img class="card-img-top" src="../static/quickdraw.jpg" width="238px" height="238px">
 			<div class="card-body">
-				<h5 class="card-title">Lucky Rows</h5>
+				<h5 class="card-title">Quick Draw</h5>
+				<h5 class="text-center" style="color:#f84854">$1,000</h5>
+				<p class="card-text">For this ticket, win $2,000 if the numbers in a row add up to a multiple of three!</p>
+				<form action="/purchase" method="POST">
+					<button type="submit" class="btn" style="background-color:#f84854;" name="type" value="C">Buy Ticket</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="col">
+		<div class="card" style="width: 15rem;">
+			<img class="card-img-top" src="../static/jackpot.jpg" width="238px" height="238px">
+			<div class="card-body">
+				<h5 class="card-title">Jackpot</h5>
+				<h5 class="text-center" style="color:#f84854">$2,000</h5>
 				<p class="card-text">For this ticket, win $10,000 if the numbers in a row are strictly increasing!</p>
 				<form action="/purchase" method="POST">
 					<button type="submit" class="btn" style="background-color:#f84854;" name="type" value="A">Buy Ticket</button>
@@ -28,24 +42,13 @@
 	</div>
 	<div class="col">
 		<div class="card" style="width: 15rem;">
-		  <img class="card-img-top" src="..." alt="Card image cap">
+		  <img class="card-img-top" src="https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/bc/3d/fb/bc3dfb53-323d-75b1-d8c6-cd9319f26dd5/source/512x512bb.jpg" width="238px" height="238px">
 		  <div class="card-body">
-		    <h5 class="card-title">Three-in-a-Row</h5>
+		    <h5 class="card-title">Lucky Scratch</h5>
+				<h5 class="text-center" style="color:#f84854">$10,000</h5>
 		    <p class="card-text">For this ticket, get any three numbers in a row to earn $100,000!</p>
 				<form action="/purchase" method="POST">
 					<button type="submit" class="btn" style="background-color:#f84854;" name="type" value="B">Buy Ticket</button>
-				</form>
-		  </div>
-		</div>
-	</div>
-	<div class="col">
-		<div class="card" style="width: 15rem;">
-		  <img class="card-img-top" src="..." alt="Card image cap">
-		  <div class="card-body">
-		    <h5 class="card-title">EXAMPLE</h5>
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				<form action="/purchase" method="POST">
-					<button type="submit" class="btn" style="background-color:#f84854;" name="type" value="C">Buy Ticket</button>
 				</form>
 		  </div>
 		</div>
