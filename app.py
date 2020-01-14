@@ -118,8 +118,6 @@ def profile():
     '''def profile(): allows user to update their profile and view their purchases'''
     user = session['username']
     tickets = db_manager.getTickets(user)
-    print("TICKET LIST")
-    print(tickets)
     notickets = True
     if len(tickets["A"]) + len(tickets["B"]) + len(tickets["C"]) > 0:
         notickets = False
@@ -336,7 +334,6 @@ def rouletteH(result, options):
 @login_required
 def slot():
     '''def slot(): placing and checking bets'''
-    # print("here's bet")
     username = session['username']
     if request.args.get('slotbet'):
         bet = request.args.get('slotbet')
@@ -351,7 +348,6 @@ def slot():
             rand2 = random.choice(slotImages)
             rand3 = random.choice(slotImages)
             random.shuffle(slots)
-            # print(slots)
             images = [dict[slots[0]], dict[slots[1]], dict[slots[2]], dict[slots[3]], dict[slots[4]], dict[slots[5]]]
             if rand1 == rand2 and rand2 == rand3:
                 if rand1 == "lemon":
@@ -397,16 +393,8 @@ for line in content:
     slots.append(line[0])
     for i in range(list[n]):
         slotImages.append(line[0])
-    # print(n)
-    # print(list[n])
     n = n + 1
-# print(dict) #testing results
 file.close()
-# print(slots)
-# print("dict here")
-# print(dict)
-# print("slotimages here")
-# print(slotImages)
 
 #====================================================
 # SCRATCH TICKET
