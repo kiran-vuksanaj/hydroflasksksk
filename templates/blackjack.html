@@ -6,7 +6,40 @@ Blackjack
 
 {% block body %}
 
-<h3>Blackjack</h3><br />
+<h1>Blackjack
+  <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style = "margin-left: 10px; background-color:#f84854;">
+		Info
+	</button>
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel" style = "font-size: 25px; color:#f84854;">Instructions for Blackjack</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" style = "font-size: 18px;">
+					<h4 class = "text-info">The Basic Rules of Blackjack</h4>
+          Also known as Twenty-One, the objective of Blackjack is to beat the dealer by getting as close to 21 as possible, without going over 21.
+          A dealer shuffles the deck of 52 cards while the players make bets.
+          <br><br>Some rules of the game are:<br><br>
+          <ol>
+            <li>Face cards are worth 10. Aces are worth 1 or 11, up to the discretion of the player, based on whatever value makes the bettter hand. All other cards
+              are worth their number or pip value.</li>
+            <li>Each player starts with two cards but the dealer's cards are hidden until the end.</li>
+            <li>To "hit" is to ask for another card. To "stand" is to end your turn and keep the total sum you have.</li>
+            <li>If your sum goes over 21, the dealer wins, regardless of their sum.</li>
+            <li>Finally, if you get a face card and an ace card on your first hand, adding up to 21, you get a Blackjack!</li>
+          </ol>
+					<div class = "modal-footer">
+						<h5>For a more comprehensive guide to Blackjack, you can visit <a href = "https://bicyclecards.com/how-to-play/blackjack/" target="_blank">this website</a>.</h5>
+					</div>
+					<br>
+				</div>
+			</div>
+		</div>
+	</div></h1><br />
 
 {% if mode=="bet" %}
 <!-- display form to place a bet -->
