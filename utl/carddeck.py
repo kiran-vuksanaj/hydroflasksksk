@@ -18,9 +18,6 @@ def http_getJSON( url, method = 'GET', args = {} ):
     req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
     response = json.loads(urlopen(req).read().decode('utf-8'))
     return response
-    #http = urllib3.PoolManager()
-    #response = http.request(method,url,args)
-    #return json.loads(response.data.decode('utf-8'))
 
 #====================================================
 # DECK OF CARDS API FUNCTION CALLS
