@@ -148,8 +148,15 @@ tiffanyC -- 2020-01-14 08:29
     flask app takes a few seconds to run.
     -added popup with instructions for blackjack
 
+kiranV -- 2020-01-14 08:35
+    -discovered significant issues with urllib with respect to school machines, causing deck of cards api to forever load or give a forbidden error
+    -struggled with finnding ways to fix it
+
 jackieL -- 2020-01-14 14:59
     -fixed urllib api request error with card games
 
 jackieL -- 2020-01-14 15:29
     -finished store functionality and updated database functions to accomodate three types of lottery tickets
+
+kiranV -- 2020-01-15 04:33
+    -setup databasing interactions for texas holdem, and functions to initialize a game, and very basic "lobby" page for seeing currently active games
