@@ -191,7 +191,7 @@ def getTickets(username):
     q = "SELECT id FROM lottery_tbl WHERE owner=? AND claimed=0"
     inputs = (username, )
     data = execmany(q, inputs).fetchall()
-    tickets = {"A": [], "B": [], "C": []}
+    tickets = {"C": [], "A": [], "B": []}
     for entry in data:
         entry = entry[0]
         if "A" in entry:

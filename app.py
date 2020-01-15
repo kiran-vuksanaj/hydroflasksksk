@@ -480,11 +480,12 @@ def lotto():
                 if(num[i]==0):
                     num[i]="zero.png"
             winnings = db_manager.claimPrize(username, id)
+            type = db_manager.getType(id)
             if(winnings == 0):
                 flash("No winnings. Better luck next time!",'alert-danger')
             else:
                 flash("Congratulations! You have claimed $" + str(winnings) + "!", 'alert-success')
-            return render_template("lottery.html",xpos=x,ypos=y,numbers=num,index=loop,prizes=True,usermoney=db_manager.getMoney(session['username']),store="active")
+            return render_template("lottery.html",xpos=x,ypos=y,numbers=num,index=loop,type=type,prizes=True,usermoney=db_manager.getMoney(session['username']),store="active")
 #====================================================
 # BLACKJACK
 
