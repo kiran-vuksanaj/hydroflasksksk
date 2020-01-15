@@ -173,7 +173,7 @@ def purchase():
     type = request.form['type']
     purchased = db_manager.purchaseTicket(username, type)
     if (purchased):
-        flash('Purchase successfully made!','alert-success')
+        flash('Purchase successfully made! Navigate to profile to access your ticket!','alert-success')
     else:
         flash('You don\'t have enough money to make this purchase!', 'alert-danger')
     return redirect(url_for("store"))
