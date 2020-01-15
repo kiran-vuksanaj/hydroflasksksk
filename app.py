@@ -158,18 +158,24 @@ def games():
 def fortune():
     nums=[1000,3250,1800,1000,1200,3750,-1,1000,3000,1600,1000,3500,1000,2000,1000,2750,0,4000,-1,1000,2500,1400,1000,2250]
     angle=random.randint(1,360)
-    session['winnings']=nums[round(angle/15)]
-    if (session['winnings']>0):
-        m="Congrats! You won $"+str(session['winnings'])+"!"
-        db_manager.updateMoney(session['username'],session['winnings'])
-        print(session['winnings']);
-    elif(session['winnings']==0):
-        m="You didn't win anything :( Better Luck Next Time!"
-    else:
-        m="OH NO! You are Bankrupt!"
-        db_manager.updateMoney(session['username'],-1*db_manager.getMoney(session['username']))
     spin=db_manager.updateTime(session['username'])
-    return render_template('wheel.html',speed=(1080+angle)/50,message=m,time=spin)
+    m=""
+    speed=0
+    if(spin!="NONE"):
+        session['winnings']=nums[round(angle/15)]
+        if (session['winnings']>0):
+            m="Congrats! You won $"+str(session['winnings'])+"!"
+            db_manager.updateMoney(session['username'],session['winnings'])
+        elif(session['winnings']==0):
+            m="You didn't win anything :( Better Luck Next Time!"
+        else:
+            m="OH NO! You are Bankrupt!"
+            db_manager.updateMoney(session['username'],-1*db_manager.getMoney(session['username']))
+        function="randomSpin("+str((1080+angle)/50)+",'"+m+"','"+spin+"')"
+    else:
+        spin=db_manager.getTime(session['username']);
+        function="timer('"+spin+"')"
+    return render_template('wheel.html',fun=function)
 #====================================================
 # DICE GAME
 
@@ -273,7 +279,7 @@ def lotto():
         num.append(random.randint(0,9))
     words=["zero.png","one.png","two.png","three.png","four.png","five.png","six.png","seven.png","eight.png","nine.png"]
     for i in range(len(num)):
-        num[i]=words[nums[i]]
+        num[i]=words[num[i]]
     x=["307px","201px","95px","307px","201px","95px","307px","201px","95px","307px","201px","95px"]
     y=["270px","270px","270px", "340px", "340px","340px","415px","415px","415px","485px","485px","485px"]
     loop=[0,1,2,3,4,5,6,7,8,9,10,11]

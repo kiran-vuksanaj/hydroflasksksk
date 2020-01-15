@@ -6,7 +6,7 @@
 <div>
   <image id="wheel" src="../static/wheel.png">
 </div>
-<button id="spin" style="background-color:#f84854;" onclick="randomSpin({{speed}},'{{message}}')" visibility="visible">Spin</button>
+<button id="spin" style="background-color:#f84854;" onclick="{{fun}}" visibility="visible">Spin</button>
 <div>
   <image id="point" src="../static/triangle.png">
 </div>
@@ -21,6 +21,7 @@
   let degrees=0;
   let rot=0;
   let start=false;
+  var t;
   function rotations(speed,time) {
     let past=performance.now(), angle=degrees;
     function spin(){
@@ -32,53 +33,51 @@
       if (t < 1) {
         requestAnimationFrame(spin);
       }else{
-        running = false;
+        message(mes);
       };
     }
       requestAnimationFrame(spin);
       start=true;
     }
 
-    function randomSpin(speed,mes) {
-        console.log(mes);
+    function randomSpin(speed,mes,time) {
         if (!start) {
           rotations(speed, 5000);
         };
         start=true;
-        //countDownDate=new Date(time);
-        //console.log(countDownDate);
-        message(mes);
+        message(mes)
+        timer(time);
     };
     function message(message) {
       setTimeout(function(){ alert(message); }, 5000);
     };
 // Update the count down every 1 second
-var x = setInterval(function() {
   function timer(time){
-    countDownDate=new Date(time);
-    if(countDownDate!=-1){
-    var now=new Date();
+    setInterval(function(){
+      countDownDate=new Date(time);
+      now=new Date();
+      if(countDownDate!=-1){
   // Find the distance between now and the count down date
-    var distance = countDownDate - now;
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    document.getElementById("spin").style.visibility="hidden";
-    document.getElementById("timecard").style.visibility="visible";
-    document.getElementById("timer").innerHTML = hours + "h "+ minutes + "m " + seconds + "s ";
-    start=true;
+        var distance = countDownDate - now;
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.getElementById("spin").style.visibility="hidden";
+        document.getElementById("timecard").style.visibility="visible";
+        document.getElementById("timer").innerHTML = hours + "h "+ minutes + "m " + seconds + "s ";
+        start=true;
 
-    if (distance < 0) {
-      clearInterval(x);
-      document.getElementById("spin").style.visibility="visible";
-      document.getElementById("timecard").style.visibility="hidden";
-      document.getElementById("timer").innerHTML = "Spin!";
-      countDownDate=-1;
-      start=false;
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("spin").style.visibility="visible";
+          document.getElementById("timecard").style.visibility="hidden";
+          document.getElementById("timer").innerHTML = "Spin!";
+          countDownDate=-1;
+          start=false;
+        }
       }
-    }
-  }
-}, 1000);
+    },1000);
+    };
 </script>
 
 {% endblock %}
