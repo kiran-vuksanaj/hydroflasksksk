@@ -12,24 +12,8 @@
 <br>
 <h1>Profile</h1>
 <h4 class="text-success">Your Money: ${{ money }}</h4>
-<br>
-<h3 style="color:#f84854;">Change Your Password</h3>
-<form action="/resetpasswd" method="post" class="w-50 p-3">
-  <div class="form-group">
-    <label for="password" class="font-weight-bold">New Password</label>
-    <input name="password" type="password" class="form-control" id="password">
-  </div>
-  <div class="form-group">
-    <label for="verif" class="font-weight-bold">Password Verification</label>
-    <input name="verif" type="password" class="form-control" id="password">
-  </div>
-  <div class="form-group">
-    <label for="oldpass" class="font-weight-bold">Old Password</label>
-    <input name="oldpass" type="password" class="form-control" id="oldpass">
-  </div>
-  <br>
-  <button type="submit" class="btn" style="background-color:#f84854;">Change Password</button>
-</form><br><br>
+<br><br>
+
 <h3 style="color:#f84854;">Lottery Tickets</h3>
 <small>(Only IDs of unclaimed tickets are shown below.)</small><br><br>
 {% if notickets %}
@@ -55,6 +39,23 @@
 	{% endfor %}
 </div>
 {% endif %}
-<br><br><br>
+<br><br>
+<h3 style="color:#f84854;">Change Your Password</h3>
+<form action="/resetpasswd" method="post" class="w-50 p-3">
+  <div class="form-group">
+    <label for="password" class="font-weight-bold">New Password</label>
+    <input name="password" type="password" class="form-control" id="password">
+  </div>
+  <div class="form-group">
+    <label for="verif" class="font-weight-bold">Password Verification</label>
+    <input name="verif" type="password" class="form-control" id="password">
+  </div>
+  <div class="form-group">
+    <label for="oldpass" class="font-weight-bold">Old Password</label>
+    <input name="oldpass" type="password" class="form-control" id="oldpass">
+  </div>
+  <br>
+  <button type="submit" class="btn" style="background-color:#f84854;">Change Password</button>
+</form><br><br>
 
 {% endblock %}
