@@ -27,7 +27,7 @@ def addUser(username, password):
     inputs = (username,)
     data = execmany(q, inputs).fetchone()
     if (data is None):
-        q = "INSERT INTO user_tbl VALUES(?, ?, '', 100000, 0, '')"
+        q = "INSERT INTO user_tbl VALUES(?, ?, '', 50000, 0, '')"
         inputs = (username, password)
         execmany(q, inputs)
         return True
@@ -107,7 +107,7 @@ def calculatePrize(type, num):
                 winnings = 100000
     else: #type C
         for i in range(4):
-            if ((num[i*3] + num [i*3+1] + num[i*3+2]) % 3 == 0):
+            if ((num[i*3] + num [i*3+1] + num[i*3+2]) % 7 == 0):
                 winnings = 2500
     return winnings
 
