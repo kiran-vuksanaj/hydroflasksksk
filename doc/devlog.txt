@@ -147,3 +147,9 @@ tiffanyC -- 2020-01-14 08:29
     -moved the function for getting wikipedia information to another area of code to make games.html load faster. The only bad thing is that the
     flask app takes a few seconds to run.
     -added popup with instructions for blackjack
+
+jackieL -- 2020-01-14 14:59
+    -fixed urllib api request error with card games
+
+jackieL -- 2020-01-14 15:29
+    -finished store functionality and updated database functions to accomodate three types of lottery tickets

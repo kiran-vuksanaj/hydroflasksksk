@@ -71,8 +71,8 @@ Blackjack
 {% endfor %}
 <br /><br /><br />
 <form action="/blackjack" method="POST">
-  <button type="submit" name="hit" class="btn btn-primary">Hit</button>
-  <button type="submit" name="stand" class="btn btn-primary">Stand</button>
+  <button type="submit" name="hit" class="btn" style="background-color:#f84854;">Hit</button>
+  <button type="submit" name="stand" class="btn" style="background-color:#f84854;">Stand</button>
 </form>
 <br />
 <p class="font-italic">Note: if you have already hit, refreshing this page will be interpreted as a hit.</p>
@@ -85,13 +85,15 @@ Blackjack
 {% for card in game.dealer_cards %}
 <img src={{card.image}} />
 {% endfor %}
-{<h6> Your Cards </h6>
+<br><br><br>
+<h6> Your Cards </h6>
 {% for card in game.player_cards %}
 <img src={{card.image}} />
 {% endfor %}
 <br /><br /><br />
-<input class="btn btn-link btn-primary text-decoration-none text-white" type="button" onclick="location.href='/home'" value="Go Home" />
-<input class="btn btn-link btn-success text-decoration-none text-white" type="button" onclick="location.href='/blackjack'" value="Play Again" />
+<input class="btn btn-link text-decoration-none text-white" style="background-color:#f84854;"type="button" onclick="location.href='/home'" value="Go Home" />
+<input class="btn btn-link text-decoration-none text-white" style="background-color:#f84854;" type="button" onclick="location.href='/blackjack'" value="Play Again" />
+<br /><br /><br />
 {% endif %}
 
 {% endblock %}

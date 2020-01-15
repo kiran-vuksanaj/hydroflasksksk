@@ -31,17 +31,29 @@
   <button type="submit" class="btn" style="background-color:#f84854;">Change Password</button>
 </form><br><br>
 <h3 style="color:#f84854;">Lottery Tickets</h3>
-<small>(Only IDs of unclaimed tickets are shown below.)</small><br>
+<small>(Only IDs of unclaimed tickets are shown below.)</small><br><br>
 {% if notickets %}
-	<a href="/store" class="text-info">You have no tickets left. Head over to the store to buy more!</a>
+	<h4><a href="/store" class="text-info">You have no tickets left. Head over to the store to buy more!</a></h4>
 {% else %}
+<div class="row w-75">
 	{% for key, value in tickets %}
-		<h1>{{ key }}</h1>
+	<div class="col">
+		<h2>
+			{% if key == "A" %}
+			Jackpot
+			{% elif key == "B" %}
+			Lucky Scratch
+			{% else %}
+			Quick Draw
+			{% endif %}
+		</h2>
 		{% for ticket in value %}
 		<a href="/lottery?id={{ticket}}" class="text-info">{{ ticket }}</a><br>
 		{% endfor %}
 		<br>
+	</div>
 	{% endfor %}
+</div>
 {% endif %}
 <br><br><br>
 
