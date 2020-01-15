@@ -5,6 +5,7 @@ from utl import db_builder, db_manager,carddeck
 import urllib3, json, urllib
 import random
 import wikipedia
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
@@ -188,8 +189,24 @@ def games():
     return render_template("games.html", games="active", slots = rules['slots'], dice = rules['dice'], texas = rules['texas'], blackjack = rules['blackjack'], roulette = rules['roulette'], poker = rules['poker'])
 
 #====================================================
-# WHEEL OF FORTUNE
-
+# WHEEL OF FORTUNE AND LOTTERY TICKETS
+@app.route("/wheel")
+@login_required
+def fortune():
+    nums=[1000,3250,1800,1000,1200,3750,-1,1000,3000,1600,1000,3500,1000,2000,1000,2750,0,4000,-1,1000,2500,1400,1000,2250]
+    angle=random.randint(1,360)
+    session['winnings']=nums[round(angle/15)]
+    if (session['winnings']>0):
+        m="Congrats! You won $"+str(session['winnings'])+"!"
+        db_manager.updateMoney(session['username'],session['winnings'])
+        print(session['winnings']);
+    elif(session['winnings']==0):
+        m="You didn't win anything :( Better Luck Next Time!"
+    else:
+        m="OH NO! You are Bankrupt!"
+        db_manager.updateMoney(session['username'],-1*db_manager.getMoney(session['username']))
+    spin=db_manager.updateTime(session['username'])
+    return render_template('wheel.html',speed=(1080+angle)/50,message=m,time=spin)
 #====================================================
 # DICE GAME
 
@@ -407,7 +424,14 @@ file.close()
 @login_required
 def lotto():
     '''def lotto(): scratch ticket generator and handles lotto transactions'''
-    username = session['username']
+    session['winnings']=0
+    db_manager.updateMoney(session['username'],-10)
+    num=[]
+    while len(num)<13:
+        num.append(random.randint(0,9))
+    words=["zero.png","one.png","two.png","three.png","four.png","five.png","six.png","seven.png","eight.png","nine.png"]
+    for i in range(len(num)):
+        num[i]=words[nums[i]]
     x=["307px","201px","95px","307px","201px","95px","307px","201px","95px","307px","201px","95px"]
     y=["270px","270px","270px", "340px", "340px","340px","415px","415px","415px","485px","485px","485px"]
     loop=[0,1,2,3,4,5,6,7,8,9,10,11]
@@ -564,8 +588,8 @@ def blackjack():
         del session['blackjack']
     else:
         session['blackjack'] = game
-
     return render_template("blackjack.html",mode=mode,game=game,games="active")
+
 
 #====================================================
 # LOGOUT

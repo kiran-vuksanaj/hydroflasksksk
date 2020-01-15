@@ -1,0 +1,84 @@
+{% extends "_base.html" %}
+{% block title %}
+ Wheel of Fortune
+{% endblock %}
+{% block body %}
+<div>
+  <image id="wheel" src="../static/wheel.png">
+</div>
+<button id="spin" style="background-color:#f84854;" onclick="randomSpin({{speed}},'{{message}}')" visibility="visible">Spin</button>
+<div>
+  <image id="point" src="../static/triangle.png">
+</div>
+<div class="card" id="timecard" style="width: 18rem;" top="500px;">
+  <div class="card-body">
+    <h5 class="card-title">Cooldown Time</h5>
+    <p class="card-text" id="timer" font-size="14px"></p>
+  </div>
+</div>
+<script type="text/javascript">
+  var countDownDate=-1;
+  let degrees=0;
+  let rot=0;
+  let start=false;
+  function rotations(speed,time) {
+    let past=performance.now(), angle=degrees;
+    function spin(){
+      let now=performance.now();
+      let t=(now-past)/time;
+      if(t>1)t=1;
+      degrees=angle+(t*speed-0.5*speed*t*t)*100;
+      document.getElementById("wheel").style.transform ="rotate("+degrees+"deg)";
+      if (t < 1) {
+        requestAnimationFrame(spin);
+      }else{
+        running = false;
+      };
+    }
+      requestAnimationFrame(spin);
+      start=true;
+    }
+
+    function randomSpin(speed,mes) {
+        console.log(mes);
+        if (!start) {
+          rotations(speed, 5000);
+        };
+        start=true;
+        //countDownDate=new Date(time);
+        //console.log(countDownDate);
+        message(mes);
+    };
+    function message(message) {
+      setTimeout(function(){ alert(message); }, 5000);
+    };
+// Update the count down every 1 second
+var x = setInterval(function() {
+  function timer(time){
+    countDownDate=new Date(time);
+    if(countDownDate!=-1){
+    var now=new Date();
+  // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("spin").style.visibility="hidden";
+    document.getElementById("timecard").style.visibility="visible";
+    document.getElementById("timer").innerHTML = hours + "h "+ minutes + "m " + seconds + "s ";
+    start=true;
+
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("spin").style.visibility="visible";
+      document.getElementById("timecard").style.visibility="hidden";
+      document.getElementById("timer").innerHTML = "Spin!";
+      countDownDate=-1;
+      start=false;
+      }
+    }
+  }
+}, 1000);
+</script>
+
+{% endblock %}
