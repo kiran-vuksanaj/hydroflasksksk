@@ -1,4 +1,4 @@
-git Team Hydroflask
+Team Hydroflask
 Sofdev1 pd1
 P02 -- Devlog
 2019-12-26
@@ -160,3 +160,6 @@ jackieL -- 2020-01-14 15:29
 
 kiranV -- 2020-01-15 04:33
     -setup databasing interactions for texas holdem, and functions to initialize a game, and very basic "lobby" page for seeing currently active games
+
+kiranV -- 2020-01-15 08:22
+    -fixed a bug surrounding refresh on the endgame page for blackjack

@@ -512,8 +512,11 @@ def blackjack_cardtotal(cards):
 @login_required
 def blackjack():
     ''' def blackjack(): route for blackjack game '''
-    if   request.method == 'GET':
+    
+    if   request.method == 'GET' or (not 'blackjack' in session):
         # initial entry into a game, show the bet decision page
+        if request.method == 'POST':
+            flash('No game currently exists; please start a new one!','alert-danger')
         mode = 'bet'
         game = {}
     elif 'bet' in request.form:
