@@ -1,0 +1,42 @@
+{% extends "_base.html" %}
+{% block title %} Texas Hold'em | Live Game {% endblock %}
+
+{% block body %}
+<h3>Texas Hold'em</h3>
+<p class="lead">Live game id: <code>${{game_id}}</code>
+<!-- display current state of board -->
+<h6>Cards on the Table</h6>
+{% for card in board_cards %}
+<img src={{card.image}} />
+{% endfor %}
+<!-- display user's cards -->
+<h6>Your Cards</h6>
+{% for card in player_cards %}
+<img src={{card.image}} />
+{% endfor %}
+<!-- display bets made by all players in the game -->
+<h6>Placed Bets</h6>
+{% for player in game %}
+<p>{{player.username}}: ${{player.bet}}</p>
+{% endfor %}
+<!-- if its your turn, display the bet button -->
+{% if myturn %}
+<form action="/blackjack" method="POST">
+  <div class="form-group w-25">
+    <label for="bet">Please place a bet (integer):</label>
+    <input
+      name="bet" id="bet"
+      type="number"
+      class="form-control"
+      value="{{minbet}}" min="{{minbet}}"
+      />
+  </div>
+  <br />
+  <button type="submit" class="btn" style="background-color:#f84854">Bet</button>
+</form>
+
+{% else %}
+<p>Not currently your turn!</p>
+<!-- display timer till desired refresh here -->
+{% endif %}
+{% endblock %}
