@@ -66,7 +66,6 @@ def updateMoney(username, amount):
     execmany(q, inputs)
 
 #====================================================
-<<<<<<< HEAD
 # LOTTERY TABLE FUNCTIONS
 
 def getType(id):
