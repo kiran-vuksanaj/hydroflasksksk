@@ -42,7 +42,39 @@
   top:200px;
   right:400px;
 }
-#wheel{
-  transform: rotate(7.5deg);
+
+#timecard{
+    position: absolute;
+    top:450px;
+    right:490px;
 }
- 
+
+#timecard{
+    position: absolute;
+    top:500px;
+    right:490px;
+    visibility: hidden;
+      z-index: 4;
+}
+
+#wheel{
+  transform: rotate(8deg);
+  right:225px;
+  position:absolute;
+  z-index: 1;
+}
+
+#spin{
+  position: absolute;
+  top:500px;
+  right:600px;
+  font-size:24px;
+  border-radius: 12px;
+  z-index: 3;
+}
+
+#point{
+  position:relative;
+  top:200px;
+  z-index: 2;
+}

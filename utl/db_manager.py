@@ -1,5 +1,7 @@
 import sqlite3
 from utl.db_builder import exec, execmany
+from datetime import datetime
+from datetime import timedelta
 
 #====================================================
 # SIGN UP AND LOGIN FUNCTIONS
@@ -61,3 +63,23 @@ def updateMoney(username, amount):
     execmany(q, inputs)
 
 #====================================================
+
+def updateTime(username):
+    '''def updateTime(username): updates the time of the next daily spin of wheel of fortune'''
+    #q="SELECT time FROM user_tbl WHERE username=?"
+    #inputs=(username,)
+    #time=execmany(q,inputs).fetchone()[0]
+    #time=time.split(" ")
+    #time[0]=time[0].split("-")
+    #time[1]=time[1].split(":")
+    #prev=datetime(int(time[0][0]),int(time[0][1]),int(time[0][2]),int(time[1][0]),int(time[1][1]),int(time[1][2]))
+    #now=datetime.now()
+    #if(now>prev):
+    q="UPDATE user_tbl SET time=? WHERE username=?"
+    now=datetime.now()+timedelta(days=1)
+    now=str(now.strftime("%Y-%m-%d %H:%M:%S"))
+    inputs=(now,username)
+    execmany(q,inputs)
+    return now
+    #else:
+        #return execmany(q,inputs).fetchone()[0]
