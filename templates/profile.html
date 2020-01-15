@@ -23,12 +23,12 @@
 	{% for key, value in tickets %}
 	<div class="col">
 		<h2>
-			{% if key == "A" %}
-			Jackpot
-			{% elif key == "B" %}
-			Lucky Scratch
-			{% else %}
+			{% if key == "C" %}
 			Quick Draw
+			{% elif key == "A" %}
+			Jackpot
+			{% else %}
+			Lucky Scratch
 			{% endif %}
 		</h2>
 		{% for ticket in value %}

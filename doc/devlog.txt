@@ -163,3 +163,7 @@ kiranV -- 2020-01-15 04:33
 
 kiranV -- 2020-01-15 08:22
     -fixed a bug surrounding refresh on the endgame page for blackjack
+
+tiffanyC -- 2020-01-15 12:20
+    -reordered lottery tickets in order of increasing cost/prize money
+    -fixed problem of wrong instructions appearing on lottery page
