@@ -424,14 +424,7 @@ file.close()
 @login_required
 def lotto():
     '''def lotto(): scratch ticket generator and handles lotto transactions'''
-    session['winnings']=0
-    db_manager.updateMoney(session['username'],-10)
-    num=[]
-    while len(num)<13:
-        num.append(random.randint(0,9))
-    words=["zero.png","one.png","two.png","three.png","four.png","five.png","six.png","seven.png","eight.png","nine.png"]
-    for i in range(len(num)):
-        num[i]=words[nums[i]]
+    username = session['username']
     x=["307px","201px","95px","307px","201px","95px","307px","201px","95px","307px","201px","95px"]
     y=["270px","270px","270px", "340px", "340px","340px","415px","415px","415px","485px","485px","485px"]
     loop=[0,1,2,3,4,5,6,7,8,9,10,11]
@@ -536,7 +529,7 @@ def blackjack_cardtotal(cards):
 @login_required
 def blackjack():
     ''' def blackjack(): route for blackjack game '''
-    
+
     if   request.method == 'GET' or (not 'blackjack' in session):
         # initial entry into a game, show the bet decision page
         if request.method == 'POST':
