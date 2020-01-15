@@ -133,11 +133,17 @@ kiranV -- 2020-01-13 08:25
     -merged blackjack into master
 
 tiffanyC -- 2020-01-13 08:30
-      -changed styling of roulette, slots, and dice game pages to match styling on the all games page
-      -Jackie changed styling of games page
+    -changed styling of roulette, slots, and dice game pages to match styling on the all games page
+    -Jackie changed styling of games page
 
 jackieL -- 2020-01-13 11:54
     -wrote database functions to connect frontend lottery framework to backend, thus allowing users to purchase and redeem lottery tickets, edited html to reflect purchases from store
 
 jackieL -- 2020-01-13 14:42
-    -added different types of lottery tickets to store, wrote database functions to handle each 
+    -added different types of lottery tickets to store, wrote database functions to handle each
+
+tiffanyC -- 2020-01-14 08:29
+    -merged wikipedia to master
+    -moved the function for getting wikipedia information to another area of code to make games.html load faster. The only bad thing is that the
+    flask app takes a few seconds to run.
+    -added popup with instructions for blackjack

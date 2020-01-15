@@ -38,6 +38,7 @@ def no_login_required(f):
 
 rules = {}
 if len(rules) == 0:
+    print("Retrieving Wikipedia info")
     test = wikipedia.page("Slot machine").content
     rules['slots'] = test[0:374] + " " + test[596:705] + " " + test[1084:1182]
     test = wikipedia.page("Sic bo").content
@@ -50,6 +51,8 @@ if len(rules) == 0:
     rules['roulette'] = test
     test = wikipedia.page("Chinese poker").content
     rules['poker'] = test[0:391] + " " + test[409:513]
+else:
+    print("All Wikipedia info retrieved.")
 
 #====================================================
 # LOGIN AND SIGNUP PAGES
