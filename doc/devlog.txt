@@ -244,3 +244,6 @@ tiffanyC -- 2020-01-15 21:39
 tiffanyC -- 2020-01-15 23:37
     -fixed lottery ticket layout
     -removed texas holdem from featured games in home page and replaced it with blackjack
+
+jackieL -- 2020-01-15 23:54
+    -finished testing website and debugging blackjack/lotto/wheel
