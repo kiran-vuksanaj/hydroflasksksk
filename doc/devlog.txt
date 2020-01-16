@@ -14,6 +14,10 @@ kiranV -- 2020-01-02 14:23
     -added pdf files of knowledge base cards for our three APIs
     -updated design.pdf to include amanda's changes
 
+amandaZ -- 2020-01-06 18:36
+    -prepared the png, downloads, and photos for the coin and the lotto tickets
+    -photoshopped the pictures for layering later
+
 kiranV -- 2020-01-06 19:46
     -updated pdf for design doc including changes based on peer review:
       -revised assignment of roles
@@ -23,6 +27,14 @@ kiranV -- 2020-01-06 19:46
 jackieL -- 2020-01-06 20:44
     -added login and signup html pages with appropriate flask routes, and database functions, added bootstrap styling, created database tables
 
+amandaZ -- 2020-10-06 22:14
+    -researched how to get eraser effect
+    -got canvas setup to work
+    -mouse is able to erase the ticket but the bottom ticket is not aligned with top layering
+
+amandaZ -- 2020-10-06 23:32
+      -got two layers of lottery to align and scratching ticket works
+      -created css file for styling the tickets
 jackieL -- 2020-01-07 08:09
 		-uploaded preliminary pictures for website
 
@@ -35,6 +47,9 @@ tiffanyC -- 2020-01-07 08:13
 jackieL -- 2020-01-07 08:18
 		-added home and profile page with styling and appropriate database functions
 
+amandaZ -- 2020-01-07 08:34
+    -due to a tragic accident of deleting css file, I lost the functionality of the ticket\
+    -however, I was able to redo it and it works know
 
 tiffanyC -- 2020-01-07 08:40
     -slot machine generates random images from dictionary each call
@@ -52,6 +67,10 @@ tiffanyC -- 2019-01-07 18:45
     -changed layout of slotmachine.html for better user experience
     -viewers can see money updates on slotmachine.html
 
+amandaZ -- 2019-01-07 19:23
+    -had to go on shutter shock and make all the number pngs
+    -styled numbers in css
+
 jackieL -- 2020-01-07 19:24
     -updated homepage styling
 
@@ -63,6 +82,15 @@ kiranV -- 2020-01-07 20:19
 
 jackieL -- 2020-01-07 20:28
     -edited formatting for games html page
+
+amandaZ -- 2019-01-07 21:47
+    -made a random number generator for the lotto ticket
+    -figured out the perfect coordinates of where to place the number on ticket
+
+amandaZ -- 2020-01-08 20:45
+    -started working on wheel of fortune
+      -found image for wheel of fortune
+      -figured out algorithm to detect which spinner it will land on with jlin
 
 kiranV -- 2020-01-08 08:40
     -wrote most of the logic for playing blackjack, function calls to get data from deck of cards API
@@ -88,7 +116,6 @@ kiranV -- 2020-01-09 08:37
     -updated README.md to match requirements as indicated by final deliverables (Task the F-I-F)
     -began writing the template and the game ending logic for blackjack, encountering several bugs and will handle them soon
 
-
 jackieL -- 2020-01-09 08:42
     -added the foundation of the dice game with most betting options
 
@@ -103,6 +130,10 @@ jackieL -- 2020-01-10 00:19
 tiffanyC -- 2020-01-10 12:24
     -added wikipedia descriptions for all games on branch 'wikipedia' using the python wikipedia import
 
+amandaZ -- 2020-01-10 17:45
+	-commented all my functions
+	-algorithm for winning scratch ticket
+
 jackieL -- 2020-01-11 00:33
     -started working on roulette game
 
@@ -111,6 +142,9 @@ jackieL -- 2020-01-11 14:45
 
 jackieL -- 2020-01-11 17:27
     -wrote python functions and finished roulette game, edited html for roulette as well
+
+amandaZ -- 2020-01-11 20:12
+	-claim prize works
 
 tiffanyc -- 2020-01-12 01:33
     -made information popups for dice, roulette, and slot machine games on 'wikipedia' branch
@@ -121,6 +155,11 @@ tiffanyC -- 2020-01-12 17:36
     -added user money to Amanda's scratch ticket
     -did some styling to the scratch ticket html but had a hard time centering objects and putting them in relative, responsive positions
     -made information text on games.html into popup boxes to reduce the ugliness of too much text on the page
+
+amandaZ -- 2020-01-12 21:13
+	-photoshopping wheel to be used
+	-researching wheel and physics stuff
+	-playing around with rotation
 
 jackieL -- 2020-01-12 23:13
     -updated design doc (removed Chinese poker, added new data table, edited component map)
@@ -136,11 +175,18 @@ tiffanyC -- 2020-01-13 08:30
     -changed styling of roulette, slots, and dice game pages to match styling on the all games page
     -Jackie changed styling of games page
 
+amandaZ -- 2020-01-13 08:42
+	-tried to implement a rotating wheel
+	-got wheel to rotate once when you click a button
+
 jackieL -- 2020-01-13 11:54
     -wrote database functions to connect frontend lottery framework to backend, thus allowing users to purchase and redeem lottery tickets, edited html to reflect purchases from store
 
 jackieL -- 2020-01-13 14:42
     -added different types of lottery tickets to store, wrote database functions to handle each
+
+amandaZ -- 2020-01-13 19:52
+	-got wheel to rotate with different speed but no slowing down
 
 tiffanyC -- 2020-01-14 08:29
     -merged wikipedia to master
@@ -152,17 +198,30 @@ kiranV -- 2020-01-14 08:35
     -discovered significant issues with urllib with respect to school machines, causing deck of cards api to forever load or give a forbidden error
     -struggled with finnding ways to fix it
 
+amandaZ -- 2020-01-14 08:48
+	-used physics to get wheel to slow down
+	-used physics to calculate which part to land on
+	-made list of possible spins
+
 jackieL -- 2020-01-14 14:59
     -fixed urllib api request error with card games
 
 jackieL -- 2020-01-14 15:29
     -finished store functionality and updated database functions to accomodate three types of lottery tickets
 
+amandaZ -- 2020-01-14 20:29
+	-updated money with respect to wheel
+	-added pointer
+
 kiranV -- 2020-01-15 04:33
     -setup databasing interactions for texas holdem, and functions to initialize a game, and very basic "lobby" page for seeing currently active games
 
 kiranV -- 2020-01-15 08:22
     -fixed a bug surrounding refresh on the endgame page for blackjack
+
+amandaZ -- 2020-01-15 08:42
+	-tried to implement timer
+	-got the countdown thing to pop up if you already spun
 
 tiffanyC -- 2020-01-15 12:20
     -reordered lottery tickets in order of increasing cost/prize money
@@ -173,5 +232,15 @@ kiranV -- 2020-01-15 21:16
     -brought naming scheme of APIKB cards into accordance with FINAL deliverables and not PRELIMINARY deliverables
     -removed html links to texas holdem from games page
 
+amandaZ -- 2020-01-15 21:31
+  	-finished timer on wheel 
+  	-fixed the cursor on lottery ticket
+  	-got blocking spin button
+  	-fixed wheel formatting
+
 tiffanyC -- 2020-01-15 21:39
     -fixed the bootstrap layout issue in games.html
+
+tiffanyC -- 2020-01-15 23:37
+    -fixed lottery ticket layout
+    -removed texas holdem from featured games in home page and replaced it with blackjack

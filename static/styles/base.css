@@ -47,7 +47,7 @@
 #timecard{
     position: relative;
     top:-650px;
-    right:0px;
+    right:-0px;
     visibility: hidden;
     z-index: 4;
 }
@@ -62,7 +62,7 @@
 #spin{
   position: relative;
   right:0px;
-  top:-450px;
+  top:-350px;
   font-size:24px;
   border-radius: 12px;
   z-index: 3;
@@ -70,6 +70,6 @@
 
 #point{
   position:relative;
-  top:-700px;
+  top:-650px;
   z-index: 2;
 }
