@@ -10,10 +10,10 @@
 <small>(Press scratch all to claim prize!)</small><br><br>
 <div class="row">
   <div class="col-6" style = "height: 650px;">
-      <image id="images" src="../static/scratch.jpg">
-      <canvas id="canvas"></canvas>
+      <image id="images" class="box" src="../static/scratch.jpg">
+      <canvas id="canvas" class="box"></canvas>
       {% for i in index %}
-      <image class="numbers" style="top:{{ypos[i]}};right:{{xpos[i]}};" src="../static/{{numbers[i]}}">
+      <image class="numbers box" style="top:{{ypos[i]}};right:{{xpos[i]}};" src="../static/{{numbers[i]}}">
       {% endfor %}
       <br><br>
   </div>
