@@ -233,9 +233,10 @@ kiranV -- 2020-01-15 21:16
     -removed html links to texas holdem from games page
 
 amandaZ -- 2020-01-15 21:31
-  	-finished timer on wheel
+  	-finished timer on wheel 
   	-fixed the cursor on lottery ticket
   	-got blocking spin button
+  	-fixed wheel formatting
 
 tiffanyC -- 2020-01-15 21:39
     -fixed the bootstrap layout issue in games.html
