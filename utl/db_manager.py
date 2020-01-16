@@ -211,9 +211,7 @@ def updateTime(username):
     '''def updateTime(username): updates the time of the next daily spin of wheel of fortune'''
     q="SELECT time FROM user_tbl WHERE username=?"
     inputs=(username,)
-    print("HEREHERHERHERERE")
     time=execmany(q,inputs).fetchone()[0]
-    print(time)
     if(time=="0"):
         q="UPDATE user_tbl SET time=? WHERE username=?"
         now=datetime.now()+timedelta(days=1)
