@@ -189,7 +189,7 @@ def games():
     return render_template("games.html", games="active", slots = rules['slots'], dice = rules['dice'], texas = rules['texas'], blackjack = rules['blackjack'], roulette = rules['roulette'], poker = rules['poker'])
 
 #====================================================
-# WHEEL OF FORTUNE
+# WHEEL OF FORTUNE AND LOTTERY TICKETS
 @app.route("/wheel")
 @login_required
 def fortune():
@@ -538,11 +538,11 @@ def blackjack_cardtotal(cards):
 @login_required
 def blackjack():
     ''' def blackjack(): route for blackjack game '''
-
     if   request.method == 'GET' or (not 'blackjack' in session):
         # initial entry into a game, show the bet decision page
         if request.method == 'POST':
-            flash('No game currently exists; please start a new one!','alert-danger')
+            flash('Please start a new game!','alert-danger')
+            return redirect(url_for("blackjack"), code=303)
         mode = 'bet'
         game = {}
     elif 'bet' in request.form:
