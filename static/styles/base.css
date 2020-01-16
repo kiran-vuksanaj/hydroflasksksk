@@ -43,31 +43,26 @@
   right:400px;
 }
 
-#timecard{
-    position: absolute;
-    top:450px;
-    right:490px;
-}
 
 #timecard{
-    position: absolute;
-    top:500px;
-    right:490px;
+    position: relative;
+    top:-650px;
+    right:0px;
     visibility: hidden;
-      z-index: 4;
+    z-index: 4;
 }
 
 #wheel{
   transform: rotate(8deg);
-  right:225px;
-  position:absolute;
+  right:3px;
+  position:relative;
   z-index: 1;
 }
 
 #spin{
-  position: absolute;
-  top:500px;
-  right:600px;
+  position: relative;
+  right:0px;
+  top:-450px;
   font-size:24px;
   border-radius: 12px;
   z-index: 3;
@@ -75,6 +70,6 @@
 
 #point{
   position:relative;
-  top:200px;
+  top:-700px;
   z-index: 2;
 }
