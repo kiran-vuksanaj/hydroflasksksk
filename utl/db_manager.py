@@ -29,7 +29,7 @@ def addUser(username, password):
     inputs = (username,)
     data = execmany(q, inputs).fetchone()
     if (data is None):
-        q = "INSERT INTO user_tbl VALUES(?, ?, '', 50000, 0, '')"
+        q = "INSERT INTO user_tbl VALUES(?, ?, 50000, 0)"
         inputs = (username, password)
         execmany(q, inputs)
         return True
@@ -211,18 +211,23 @@ def updateTime(username):
     '''def updateTime(username): updates the time of the next daily spin of wheel of fortune'''
     q="SELECT time FROM user_tbl WHERE username=?"
     inputs=(username,)
+    print("HEREHERHERHERERE")
     time=execmany(q,inputs).fetchone()[0]
+    print(time)
     if(time=="0"):
         q="UPDATE user_tbl SET time=? WHERE username=?"
         now=datetime.now()+timedelta(days=1)
         now=str(now.strftime("%m/%d/%Y %H:%M:%S"))
         inputs=(now,username)
         execmany(q,inputs)
+        print(now)
         return now
     time=time.split(" ")
+    print(time)
     time[1]=str(time[1]).split(":")
-    time[0]=str(time[0]).split("/")
     print(time[1])
+    time[0]=str(time[0]).split("/")
+    print(time[0])
     prev=datetime(int(time[0][2]),int(time[0][0]),int(time[0][1]),int(time[1][0]),int(time[1][1]),int(time[1][2]))
     now=datetime.now()
     if(now>prev):
@@ -231,6 +236,7 @@ def updateTime(username):
         now=str(now.strftime("%m/%d/%Y %H:%M:%S"))
         inputs=(now,username)
         execmany(q,inputs)
+        print(now)
         return now
     else:
         return 'NONE'
