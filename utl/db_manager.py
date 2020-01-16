@@ -215,7 +215,7 @@ def updateTime(username):
     if(time=="0"):
         q="UPDATE user_tbl SET time=? WHERE username=?"
         now=datetime.now()+timedelta(days=1)
-        now=str(now.strftime("%m-%d-%Y %H:%M:%S"))
+        now=str(now.strftime("%m/%d/%Y %H:%M:%S"))
         inputs=(now,username)
         execmany(q,inputs)
         return now
