@@ -221,14 +221,14 @@ def updateTime(username):
         return now
     time=time.split(" ")
     time[1]=str(time[1]).split(":")
-    time[0]=str(time[0]).split("-")
+    time[0]=str(time[0]).split("/")
     print(time[1])
     prev=datetime(int(time[0][2]),int(time[0][0]),int(time[0][1]),int(time[1][0]),int(time[1][1]),int(time[1][2]))
     now=datetime.now()
     if(now>prev):
         q="UPDATE user_tbl SET time=? WHERE username=?"
         now=datetime.now()+timedelta(days=1)
-        now=str(now.strftime("%m-%d-%Y %H:%M:%S"))
+        now=str(now.strftime("%m/%d/%Y %H:%M:%S"))
         inputs=(now,username)
         execmany(q,inputs)
         return now
@@ -242,7 +242,7 @@ def getTime(username):
     time=execmany(q,inputs).fetchone()[0]
     time=time.split(" ")
     time[1]=str(time[1]).split(":")
-    time[0]=str(time[0]).split("-")
+    time[0]=str(time[0]).split("/")
     prev=datetime(int(time[0][2]),int(time[0][0]),int(time[0][1]),int(time[1][0]),int(time[1][1]),int(time[1][2]))
-    prev=str(prev.strftime("%m-%d-%Y %H:%M:%S"))
+    prev=str(prev.strftime("%m/%d/%Y %H:%M:%S"))
     return prev
