@@ -172,3 +172,6 @@ kiranV -- 2020-01-15 21:16
     -removed unreached goals from design doc, updated pdf
     -brought naming scheme of APIKB cards into accordance with FINAL deliverables and not PRELIMINARY deliverables
     -removed html links to texas holdem from games page
+
+tiffanyC -- 2020-01-15 21:39
+    -fixed the bootstrap layout issue in games.html

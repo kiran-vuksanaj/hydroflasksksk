@@ -203,6 +203,10 @@ def getTickets(username):
         else:
             tickets["C"].append(entry)
     return tickets
+
+#====================================================
+# WHEEL OF FORTUNE FUNCTIONS
+
 def updateTime(username):
     '''def updateTime(username): updates the time of the next daily spin of wheel of fortune'''
     q="SELECT time FROM user_tbl WHERE username=?"
@@ -231,7 +235,7 @@ def updateTime(username):
         return 'NONE'
 
 def getTime(username):
-    '''def updateTime(username): returns the time of the next daily spin of wheel of fortune'''
+    '''def getTime(username): returns the time of the next daily spin of wheel of fortune'''
     q="SELECT time FROM user_tbl WHERE username=?"
     inputs=(username,)
     time=execmany(q,inputs).fetchone()[0]
