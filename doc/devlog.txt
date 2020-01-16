@@ -66,7 +66,7 @@ tiffanyC -- 2019-01-07 18:45
     -created a popup menu for slot machine instruction
     -changed layout of slotmachine.html for better user experience
     -viewers can see money updates on slotmachine.html
-    
+
 amandaZ -- 2019-01-07 19:23
     -had to go on shutter shock and make all the number pngs
     -styled numbers in css
@@ -142,7 +142,7 @@ jackieL -- 2020-01-11 14:45
 
 jackieL -- 2020-01-11 17:27
     -wrote python functions and finished roulette game, edited html for roulette as well
-    
+
 amandaZ -- 2020-01-11 20:12
 	-claim prize works
 
@@ -184,7 +184,7 @@ jackieL -- 2020-01-13 11:54
 
 jackieL -- 2020-01-13 14:42
     -added different types of lottery tickets to store, wrote database functions to handle each
-    
+
 amandaZ -- 2020-01-13 19:52
 	-got wheel to rotate with different speed but no slowing down
 
@@ -212,7 +212,7 @@ jackieL -- 2020-01-14 15:29
 amandaZ -- 2020-01-14 20:29
 	-updated money with respect to wheel
 	-added pointer
-	
+
 kiranV -- 2020-01-15 04:33
     -setup databasing interactions for texas holdem, and functions to initialize a game, and very basic "lobby" page for seeing currently active games
 
@@ -233,9 +233,13 @@ kiranV -- 2020-01-15 21:16
     -removed html links to texas holdem from games page
 
 amandaZ -- 2020-01-15 21:31
-	-finished timer on wheel 
-	-fixed the cursor on lottery ticket
-	-got blocking spin button
+  	-finished timer on wheel
+  	-fixed the cursor on lottery ticket
+  	-got blocking spin button
 
 tiffanyC -- 2020-01-15 21:39
     -fixed the bootstrap layout issue in games.html
+
+tiffanyC -- 2020-01-15 23:37
+    -fixed lottery ticket layout
+    -removed texas holdem from featured games in home page and replaced it with blackjack
