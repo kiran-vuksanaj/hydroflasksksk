@@ -193,6 +193,7 @@ def games():
 @app.route("/wheel")
 @login_required
 def fortune():
+    '''def furtune(): process user's request to spin wheel of fortune'''
     nums=[1000,3250,1800,1000,1200,3750,-1,1000,3000,1600,1000,3500,1000,2000,1000,2750,0,4000,-1,1000,2500,1400,1000,2250]
     angle=random.randint(1,360)
     spin=db_manager.updateTime(session['username'])
@@ -321,6 +322,7 @@ def roulette():
         return render_template("roulette.html", betting=False, money=money, options=options, bet=len(options)*bet, amount=amount, lost=lost, result=rand, color=color, games="active")
 
 def rouletteH(result, options):
+    '''def rouletteH(): helper function to handle user bets for roulette'''
     total_mult = 0
     for option in options:
         if "single" in option:
