@@ -6,7 +6,7 @@ DB_FILE = "casino.db"
 # EXEC COMMANDS
 
 def exec(cmd):
-    '''Executes a sqlite command'''
+    '''def exec(cmd): Executes a sqlite command'''
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     output = c.execute(cmd)
@@ -14,7 +14,7 @@ def exec(cmd):
     return output
 
 def execmany(cmd, inputs):
-    '''Executes a sqlite command using ? placeholder'''
+    '''def execmany(cmd, inputs): Executes a sqlite command using ? placeholder'''
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     output = c.execute(cmd, inputs)
@@ -25,7 +25,7 @@ def execmany(cmd, inputs):
 # BUILD DATABASE WITH ALL NECESSARY TABLES
 
 def build_db():
-    '''Creates database if it does not yet exist with the necessary tables'''
+    '''def build_db(): Creates database if it does not yet exist with the necessary tables'''
     command = "CREATE TABLE IF NOT EXISTS user_tbl (username TEXT, password TEXT, pfp TEXT, money INT, time TEXT, boosts TEXT)"
     exec(command)
 
