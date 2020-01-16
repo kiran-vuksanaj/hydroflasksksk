@@ -222,7 +222,7 @@ def updateTime(username):
     time=time.split(" ")
     time[1]=str(time[1]).split(":")
     time[0]=str(time[0]).split("-")
-    prev=datetime(int(time[0][0]),int(time[0][1]),int(time[0][2]),int(time[1][0]),int(time[1][1]),int(time[1][2]))
+    prev=datetime(int(time[0][2]),int(time[0][0]),int(time[0][1]),int(time[1][0]),int(time[1][1]),int(time[1][2]))
     now=datetime.now()
     if(now>prev):
         q="UPDATE user_tbl SET time=? WHERE username=?"
