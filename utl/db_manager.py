@@ -217,13 +217,8 @@ def updateTime(username):
         execmany(q,inputs)
         return now
     time=time.split(" ")
-    print(time)
     time[1]=str(time[1]).split(":")
-    print(time)
-    print(time[1])
     time[0]=str(time[0]).split("-")
-    print(time)
-    print(time[0])
     prev=datetime(int(time[0][0]),int(time[0][1]),int(time[0][2]),int(time[1][0]),int(time[1][1]),int(time[1][2]))
     now=datetime.now()
     if(now>prev):
