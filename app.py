@@ -189,7 +189,7 @@ def games():
     return render_template("games.html", games="active", slots = rules['slots'], dice = rules['dice'], texas = rules['texas'], blackjack = rules['blackjack'], roulette = rules['roulette'], poker = rules['poker'])
 
 #====================================================
-# WHEEL OF FORTUNE AND LOTTERY TICKETS
+# WHEEL OF FORTUNE
 @app.route("/wheel")
 @login_required
 def fortune():

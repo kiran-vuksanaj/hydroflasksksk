@@ -209,10 +209,9 @@ def updateTime(username):
     inputs=(username,)
     time=execmany(q,inputs).fetchone()[0]
     if(time=="0"):
-        print("yes")
         q="UPDATE user_tbl SET time=? WHERE username=?"
         now=datetime.now()+timedelta(days=1)
-        now=str(now.strftime("%Y-%m-%d %H:%M:%S"))
+        now=str(now.strftime("%m-%d-%Y %H:%M:%S"))
         inputs=(now,username)
         execmany(q,inputs)
         return now
@@ -224,7 +223,7 @@ def updateTime(username):
     if(now>prev):
         q="UPDATE user_tbl SET time=? WHERE username=?"
         now=datetime.now()+timedelta(days=1)
-        now=str(now.strftime("%Y-%m-%d %H:%M:%S"))
+        now=str(now.strftime("%m-%d-%Y %H:%M:%S"))
         inputs=(now,username)
         execmany(q,inputs)
         return now
