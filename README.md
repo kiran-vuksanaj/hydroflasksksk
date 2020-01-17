@@ -8,6 +8,8 @@ ___
 
 Welcome to the Black Diamond Casino! Here you will find a variety of betting games one can interact with much how they would a casino in the real world, simulated in a web application. Any user may create an account and be afforded a virtual balance, which they can bet on and try their luck at winning big. From single player games like Blackjack and Sic Bo, to lottery cards, slot machines, and live multiplayer tables for Texas Hold'em and Chinese Poker, there's endless fun to be found here. Give us your money.
 
+##### Video Demo [here](https://google.com/)
+
 ### APIs in Use
 - **Deck of Cards** - [API KB Card](https://docs.google.com/document/d/1oCJhl-NoNNpekMLd4C4jBXhpL9xvm6ZrVIdfoqbq-Vc/) - API which provides both images of playing cards as well as maintenance of a deck of cards from which you can draw random cards not previously seen.
 - **Wikipedia** -- [API KB Card](https://docs.google.com/document/d/1KNf_h_Rysiftc88uZNZO4LMpAyQprUTSj-eg5CMz9a8/) - API allowing for queries of Wikipedia pages, which is employed for displaying the rules of the games on our site
